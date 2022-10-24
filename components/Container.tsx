@@ -22,7 +22,7 @@ const Container = (props) => {
       >
         <div className={`flex flex-row items-center`}>
           <Image
-            src={`/logo.jpg`}
+            src={`/isa.jpeg`}
             alt="로고"
             width={40}
             height={40}
