@@ -6,7 +6,7 @@ import { useMDXComponent } from "next-contentlayer/hooks";
 const PostLayout = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const MDXComponent = useMDXComponent(post.body.code);
   
-  const customMeta = {
+  const customMeta: {title: string, description: string, date: string} = {
     title: post.title,
     description: post.description,
     date: new Date(post.date).toISOString(),

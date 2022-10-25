@@ -3,7 +3,7 @@ import Head from "next/head";
 import Nav from "./Nav";
 import metadata from "../data/metadata";
 
-const Container = (props) => {
+const Container = (props: any) => {
   const meta = {
     title: metadata.title,
     description: metadata.description,

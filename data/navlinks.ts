@@ -1,4 +1,6 @@
-const navlinks: { title: string; link: string }[] = [
+import { INavLinks } from "../common/interface/INavLinks";
+
+const navlinks: INavLinks[] = [
   { title: "Home", link: "/" },
   { title: "Blog", link: "/blog" },
 ];
