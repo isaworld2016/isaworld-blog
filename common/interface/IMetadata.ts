@@ -1,5 +1,6 @@
 export interface IMetadata {
-  title: string,
-  description: string,
-  author: string
+  title: string;
+  description: string;
+  author: string;
+  rowsPerPage: number;
 }

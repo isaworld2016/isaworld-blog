@@ -1,12 +1,86 @@
 ---
-title: 안녕하세요, 이자 입니다.
-date: 2022-10-24
-description: 이자의 신나는 정처기 학습기
+title: 페이지네이션의 구현
+date: 2022-10-01
+description: 페이지네이션을 구현하기 위한 스텝들..
 ---
 
-## 이런...
+## 페이지네이션의 필요
+블로그를 구성하는데 있어 중요한 기능 중 하나로 페이지네이션을 꼽았다.
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+## 구현할 페이지네이션의 주요 기능
+1. 첫 페이지로 가기
+2. 마지막 페이지로 가기
+3. 한 페이지 앞으로
+4. 한 페이지 뒤로
+5. 원하는 페이지 클릭시 보여주기
+6. 전체 포스팅의 개수 보여주기
 
-Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+## 페이지네이션의 구성 요소
+1. totalCount: 총 포스트의 개수
+2. rowsPerPage: 한 페이지당 보여줄 포스트의 개수
+
+## 페이지네이션 기능 구현1
+1. 페이지네이션이란:
+전체 페이지: 80개(1번~80번),
+한 페이지당 보여줄 포스팅: 5개라면,
+
+
+```
+80개 / 5개씩 = 1페이지 => 80/5 = {(5*0)+1}번 ~ {(1 + 5) - 1}번 = 1번 ~ 5번
+2페이지 = {(5*1) + 1} 번 ~ {(6 + 5) - 1}번 = 6번 ~ 10번
+
+{5(n-1) + 1}번 ~ {5(n-1) + 1} + 5 - 1
+{rowsPerPage(p-1) + 1} ~ (rowsPerPage(n-1) + rowsPerPage)
+````
+
+
+만약 3페이지가 궁금하다면?
+
+```
+p = 3;
+{rowsPerPage(p-1) + 1} ~ (rowsPerPage(n-1) + rowsPerPage)
+(5 * 2 + 1) ~ (5 * 2 + 5)
+11 ~ 15
+
+correct!
+````
+
+
+보여줄 페이지 범위는?
+12개 / 5 = 3페이지
+1~3페이지
+
+```
+12개 / 5 = 2페이지 ... 1 => 3페이지(올림 해야함)
+
+```
+
+나머지가 있으면 올림 한다!
+
+---
+페이지 슬라이스는?
+12개, 5개씩 일 경우,
+1페이지: 1=((5*(1-1)) + 1) ~ 5=(5의 배수 = 5 * 1)
+2페이지: 6=((5*(2-1)) + 1) ~ 10=(5의 배수 = 5 * 2)
+3페이지: 11=((5*(3-1)) + 1) ~ 15=(5의 배수 = 5 * 3)
+
+즉,
+from = (rowsPerPag * (currPage-1)) + 1
+to = rowsPerPag * (currPage-1)
+
+그런데 Array.slice() 를 쓸 거라면,
+from = (rowsPerPag * (currPage-1))
+to = (rowsPerPag * currPage) + 1
+---
+정리하자면,
+
+```
+const p = 1;
+const rowsPerPage = 5;
+totalCount = 80;
+
+const showPage = Math.ceil(totalCount/rowsPerPage);
+
+const fromPage = rowsPerPag * (p-1) + 1;
+const toPage = rowsPerPage * (p-1) + rowsPerPage;
+```
