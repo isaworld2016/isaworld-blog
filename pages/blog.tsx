@@ -5,14 +5,20 @@ import BlogPost from "../components/BlogPost";
 import Container from "../components/Container";
 
 const Blog = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const showPage = Math.ceil(props.pagination?.totalCount / props.pagination?.rowsPerPage);
-  const tempArr = Array.from({ length: showPage }, (v, i) => i+1);
+  const showPage = Math.ceil(
+    props.pagination?.totalCount / metadata.rowsPerPage
+  );
+  
+  const tempArr = Array.from({ length: showPage }, (v, i) => i + 1);
+
+  const callPage = (event: React.MouseEvent<HTMLElement>, page: number): void => {
+    console.log("callPage", page);
+  };
 
   return (
     <Container>
       <div className={`mt-10 flex flex-col`}>
         <div>total: {props.pagination?.totalCount}</div>
-        <div>rowsPerPage: {props.pagination?.rowsPerPage}</div>
         {props.posts.map((post) => (
           <BlogPost
             date={post.date}
@@ -22,8 +28,10 @@ const Blog = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
             key={post._id}
           />
         ))}
-        {tempArr.map(a => (
-          <a key={a}>{a}</a>
+        {tempArr.map((a) => (
+          <a key={a} onClick={(event) =>callPage(event, a)}>
+            {a}
+          </a>
         ))}
       </div>
     </Container>
@@ -36,18 +44,15 @@ export const getStaticProps = async () => {
   );
   const currPage = 1;
 
-  const fromPage = (metadata.rowsPerPage * (currPage - 1)) + 1;
-  const toPage = (metadata.rowsPerPage * currPage) + 1; // (6 * 1) + 1 = 7
+  const fromPage = metadata.rowsPerPage * (currPage - 1);
+  const toPage = metadata.rowsPerPage * currPage + 1;
 
   return {
     props: {
-      posts:posts.slice(fromPage, toPage), // 왜 안되는거징..
+      posts: posts.slice(fromPage, toPage),
       pagination: {
         totalCount: allPosts.length,
-        rowsPerPage: metadata.rowsPerPage,
-        fromPage,
-        toPage,
-      }
+      },
     },
   };
 };
