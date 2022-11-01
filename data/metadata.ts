@@ -4,7 +4,7 @@ const metadata: IMetadata = {
   title: "Isaworld Blog",
   description: "천재적인 이자님의 블로그",
   author: "isaworld",
-  rowsPerPage: 3
+  rowsPerPage: 1
 };
 
 export default metadata;
