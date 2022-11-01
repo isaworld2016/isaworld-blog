@@ -32,25 +32,29 @@ const Blog = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
     return props.posts.slice(fromPage, toPage)
   }
 
-  // TODO: 뭔가 이상하다...
   const showPages = () => {
-    let centerArray = Array.from({ length: maxPage }, (v, i) => String(i + 1));
-    // 차가 2 이상이면
-    // if(maxPage - (currPage + 3) >= 2) {
-    //   centerArray = Array.from({ length: currPage + 3 }, (v, i) => String(i + 1)); // 문자열 취급
-    //   centerArray.push('...'); // 말줄임 추가
-    //   centerArray.push(String(maxPage)) // 마지막 페이지 추가
-    // }
-    // 현재 페이지에서 3페이지 앞이...
-    // if (currPage - 3 > 2) {
-    //   // 앞에 세자리만 남기고 잘라야 하는디
-    //     centerArray.splice(1, 0, '... '); // 말줄임 추가
-    // }
-    return centerArray;
+    let output = Array.from({ length: maxPage }, (v, i) => String(i + 1));
+
+    // 1. (현재 페이지 + 3)이 maxPage와 차이가 2 이상일 경우 => '...' + 'maxPage'
+    if(maxPage - (currPage + 3) >= 2) {
+      //// 1) findIndex로 (현재 페이지 + 3)의 위치를 찾고 그 이상으로 없애버림.
+      const maxSlicePoint = output.findIndex(el => el == String(currPage + 3));
+      //// 2) '...' + 'maxPage' 붙임.
+      output = [...output.slice(0, maxSlicePoint), '...', `${maxPage}`];
+    }
+    // 2. (현재 페이지 - 3)이 1와 차이가 2 이상일 경우 =>
+    if((currPage - 3) - 1 >= 2) {
+      //// 1) findIndex로 (현재 페이지 - 3)의 위치를 찾고 그 이하로 없애버림.
+      const minSlicePoint = output.findIndex(el => el == String(currPage - 3));
+      //// 2) '1' + '...' 붙임.
+      output = ['1', '..', ...output.slice(minSlicePoint, maxPage)];
+    }
+    return output;
   }
 
   const callPage = (e: React.MouseEvent<HTMLElement>, page: number): void => {
-    if(page >= maxPage + 1) return;
+    if (page >= maxPage + 1) return; // 최대값 방어
+    if (page < 1) return; // 최소값 방어
     setCurrPage(page);
   };
 
@@ -58,7 +62,6 @@ const Blog = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
     <Container>
       <div className={`mt-10 flex flex-col`}>
         <div>total: {props.pagination?.totalCount}</div>
-        <div>perPage: {metadata.rowsPerPage}</div>
         {postSlider(props.posts).map((post) => (
           <BlogPost
             date={post.date}
@@ -68,22 +71,25 @@ const Blog = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
             key={post._id}
           />
         ))}
-        <a>
-          <span onClick={e => callPage(e, 1)}>{'<<'}</span>
-          <span onClick={e => callPage(e, currPage - 1)}> {'<'} </span>
+        <a className="font-semibold">
+          {currPage != 1 ? (
+            <>
+              <span onClick={e => callPage(e, 1)}>{'<<'}First</span>
+              <span onClick={e => callPage(e, currPage - 1)}> {'<'}Previous </span>
+            </>
+          ) : null}
           {showPages().map((a) => (
-            <span key={a} onClick={(e) => callPage(e, Number(a))} className={"mr-5" + (Number(a) == currPage ? ' text-rose-500': '')}>
+            <span key={a} onClick={(e) => callPage(e, Number(a))} className={"mr-5" + (Number(a) == currPage ? ' text-rose-500': '') + " first:ml-5 last:mr-5"}>
               {a}
             </span>
           ))}
-          {isShowMaxPage ? '...' : null}
-          {isShowMaxPage ?
-            <span onClick={(e) => callPage(e, maxPage)}> {maxPage}</span>
-            : null
-          }
+          {currPage != maxPage ? (
+            <>
+              <span onClick={e => callPage(e, currPage + 1)}>Next{'>'} </span>
+              <span onClick={e => callPage(e, maxPage)}>End{'>>'}</span>
+            </>
+          ) : null}
 
-          <span onClick={e => callPage(e, currPage + 1)}>{'>'} </span>
-          <span onClick={e => callPage(e, maxPage)}>{'>>'}</span>
         </a>
       </div>
     </Container>

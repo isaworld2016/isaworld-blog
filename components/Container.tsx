@@ -29,9 +29,9 @@ const Container = (props: any) => {
             objectFit={`cover`}
             className={`rounded-full`}
           />
-          <span className={`mx-2 font-extralight text-lg`}>
+          {/* <span className={`mx-2 font-extralight text-lg`}>
             {metadata.title}
-          </span>
+          </span> */}
         </div>
         <Nav />
       </header>
