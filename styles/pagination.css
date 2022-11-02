@@ -46,6 +46,13 @@
   text-decoration: underline;
   text-decoration-thickness: 3px;
 }
+.navigation.pagination > .nav-links > .page-numbers.cursor-unset{
+  cursor: unset;
+}
+.navigation.pagination > .nav-links > .page-numbers.cursor-unset:hover{
+  text-decoration: none;
+}
+
 .navigation.pagination > .nav-links > .page-numbers.current{
   color:red;
   text-decoration: none;
@@ -77,3 +84,4 @@
   font-weight: bold;
   cursor:pointer;
 }
+

@@ -91,7 +91,11 @@ const Blog = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
             <nav className="navigation pagination">
               <div className="nav-links">
                 {showPages().map((a) => (
-                  <div key={a} onClick={(e) => callPage(e, Number(a))} className={'page-numbers' + (Number(a) == currPage ? ' current': '')}>
+                  <div key={a} onClick={(e) => callPage(e, Number(a))} className={
+                    'page-numbers'
+                    + (Number(a) == currPage ? ' current' : '')
+                    + (a.includes('.') ? ' cursor-unset' : '')
+                  }>
                     {a}
                   </div>
                 ))}
