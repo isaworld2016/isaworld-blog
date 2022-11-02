@@ -4,6 +4,8 @@ import { InferGetStaticPropsType } from "next";
 import React, { useEffect, useState } from 'react';
 import BlogPost from "../components/BlogPost";
 import Container from "../components/Container";
+import EndIcon from '../public/assets/icons/End';
+import NextIcon from '../public/assets/icons/Next';
 
 const Blog = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   const [currPage, setCurrPage] = useState(1);
@@ -77,8 +79,12 @@ const Blog = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
             <div className="pagination-previous">
               {currPage != 1 ? (
                 <>
-                  <a onClick={e => callPage(e, 1)}>{'<<'}First</a>
-                  <a onClick={e => callPage(e, currPage - 1)}> {'<'}Previous </a>
+                  <a onClick={e => callPage(e, 1)}>
+                    <EndIcon width="16" height="16" toLeftYn={true} />
+                  </a>
+                  <a onClick={e => callPage(e, currPage - 1)}>
+                    <NextIcon width="16" height="16" toLeftYn={true} />
+                  </a>
                 </>
               ) : null}
             </div>
@@ -94,8 +100,12 @@ const Blog = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
             <div className="pagination-next">
               {currPage != maxPage ? (
                 <>
-                  <a onClick={e => callPage(e, currPage + 1)}>Next{'>'} </a>
-                  <a onClick={e => callPage(e, maxPage)}>End{'>>'}</a>
+                  <a onClick={e => callPage(e, currPage + 1)}>
+                    <NextIcon width="16" height="16" />
+                  </a>
+                  <a onClick={e => callPage(e, maxPage)}>
+                    <EndIcon width="16" height="16" />
+                  </a>
                 </>
               ) : null}
             </div>

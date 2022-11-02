@@ -40,7 +40,7 @@
   font-weight: bold;
   padding: 0 10px;
   color: #000;
-  cursor:pointer;
+  cursor:unset;
 }
 .navigation.pagination > .nav-links > .page-numbers:hover{
   text-decoration: underline;
