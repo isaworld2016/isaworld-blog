@@ -71,26 +71,37 @@ const Blog = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
             key={post._id}
           />
         ))}
-        <a className="font-semibold">
-          {currPage != 1 ? (
-            <>
-              <span onClick={e => callPage(e, 1)}>{'<<'}First</span>
-              <span onClick={e => callPage(e, currPage - 1)}> {'<'}Previous </span>
-            </>
-          ) : null}
-          {showPages().map((a) => (
-            <span key={a} onClick={(e) => callPage(e, Number(a))} className={"mr-5" + (Number(a) == currPage ? ' text-rose-500': '') + " first:ml-5 last:mr-5"}>
-              {a}
-            </span>
-          ))}
-          {currPage != maxPage ? (
-            <>
-              <span onClick={e => callPage(e, currPage + 1)}>Next{'>'} </span>
-              <span onClick={e => callPage(e, maxPage)}>End{'>>'}</span>
-            </>
-          ) : null}
-
-        </a>
+        {/*TODO: pagination 모듈화*/}
+        <div className="container-content-pagination">
+          <div className="container-content-pagination-wrapper">
+            <div className="pagination-previous">
+              {currPage != 1 ? (
+                <>
+                  <a onClick={e => callPage(e, 1)}>{'<<'}First</a>
+                  <a onClick={e => callPage(e, currPage - 1)}> {'<'}Previous </a>
+                </>
+              ) : null}
+            </div>
+            <nav className="navigation pagination">
+              <div className="nav-links">
+                {showPages().map((a) => (
+                  <div key={a} onClick={(e) => callPage(e, Number(a))} className={'page-numbers' + (Number(a) == currPage ? ' current': '')}>
+                    {a}
+                  </div>
+                ))}
+              </div>
+            </nav>
+            <div className="pagination-next">
+              {currPage != maxPage ? (
+                <>
+                  <a onClick={e => callPage(e, currPage + 1)}>Next{'>'} </a>
+                  <a onClick={e => callPage(e, maxPage)}>End{'>>'}</a>
+                </>
+              ) : null}
+            </div>
+          </div>
+        </div>
+        {/*TODO: pagination 모듈화*/}
       </div>
     </Container>
   );
