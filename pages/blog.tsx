@@ -74,9 +74,9 @@ const Blog = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
           />
         ))}
         {/*TODO: pagination 모듈화*/}
-        <div className="container-content-pagination">
-          <div className="container-content-pagination-wrapper">
-            <div className="pagination-previous">
+        <div className="pagination">
+          <div className="pagination__wrap">
+            <div className="icon__previous">
               {currPage != 1 ? (
                 <>
                   <a onClick={e => callPage(e, 1)}>
@@ -88,22 +88,22 @@ const Blog = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                 </>
               ) : null}
             </div>
-            <nav className="navigation pagination">
-              <div className="nav-links">
+            <nav className="nav">
+              <div className="nav__links">
                 {showPages().map((a) => (
                   <div
                     key={a}
                     onClick={(e) => a.includes('.') ? '' : callPage(e, Number(a))}
                     className={
-                      'page-numbers'
-                      + (Number(a) == currPage ? ' current' : '')
-                      + (a.includes('.') ? ' cursor-unset' : '')
+                      'nav__numbers'
+                      + (Number(a) == currPage ? ' nav__numbers--current' : '')
+                      + (a.includes('.') ? ' nav__numbers--cursor-unset' : '')
                     }
                   >{a}</div>
                 ))}
               </div>
             </nav>
-            <div className="pagination-next">
+            <div className="icon__next">
               {currPage != maxPage ? (
                 <>
                   <a onClick={e => callPage(e, currPage + 1)}>

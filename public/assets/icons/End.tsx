@@ -3,7 +3,7 @@ import { IEndIcon } from "./interface/IIcon";
 function EndIcon({ width, height, fill, toLeftYn }: IEndIcon) {
   return (
     <svg
-      className={toLeftYn ? "pagination-icon-rotate180" : ""}
+      className={toLeftYn ? "icon__previous--rotate-180" : ""}
       xmlns="http://www.w3.org/2000/svg"
       width={width}
       height={height}

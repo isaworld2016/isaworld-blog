@@ -1,0 +1,96 @@
+@mixin icon__a {
+  display: -webkit-box;
+  display: flex;
+  margin: 0 0 0 20px;
+  font-family: "Inter",sans-serif;
+  font-size: 15px;
+  font-weight: bold;
+  cursor:pointer;
+}
+@mixin icon--rotate {
+  transform:rotate(180deg);
+}
+
+.pagination{
+  display: flex;
+  padding: 20px 0 60px 0;
+  position:relative;
+  width: 100%;
+  justify-content: center;
+  -webkit-box-pack: center;
+
+  &__wrap{
+    display: flex;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    height: 43px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #000;
+    border-radius: 6px;
+    padding: 0 20px 0 20px;
+
+    .icon__previous{
+      display: flex;
+      a{
+        @include icon__a;
+      }
+      &--rotate-180{
+        @include icon--rotate;
+      }
+    }
+    .icon__next{
+      display: flex;
+      a{
+        @include icon__a;
+        margin: 0 20px 0 0;
+      }
+      &--rotate-180{
+        @include icon--rotate;
+      }
+    }
+
+    .nav {
+      display: -webkit-box;
+      display: flex;
+      -webkit-box-align: center;
+      align-items: center;
+      -webkit-box-pack: center;
+      justify-content: center;
+
+      &__links{
+        margin: 2px 0 0 0;
+        display: -ms-flexbox;
+        display: flex;
+        &:hover{
+          text-decoration: none;
+        }
+
+        .nav__numbers {
+          display: inline-block;
+          margin: 0 8px;
+          font-family: "Inter",sans-serif;
+          font-size: 15px;
+          font-weight: bold;
+          padding: 0 10px;
+          color: #000;
+          cursor:pointer;
+          &:hover{
+            text-decoration: underline;
+            text-decoration-thickness: 3px;
+          }
+          &--cursor-unset:hover{
+            cursor: unset;
+            text-decoration: none;
+          }
+          &--current{
+            color:red;
+            cursor:initial;
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+}

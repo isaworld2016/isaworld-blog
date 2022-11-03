@@ -3,7 +3,7 @@ import { INextIcon } from "./interface/IIcon";
 function NextIcon({ width, height, fill, toLeftYn }: INextIcon) {
   return (
     <svg
-      className={toLeftYn ? "pagination-icon-rotate180" : ""}
+      className={toLeftYn ? "icon__next--rotate-180" : ""}
       xmlns="http://www.w3.org/2000/svg"
       width={width}
       height={height}
