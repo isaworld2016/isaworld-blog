@@ -4,6 +4,7 @@ import { InferGetStaticPropsType } from "next";
 import React, { useEffect, useState } from 'react';
 import BlogPost from "../components/BlogPost";
 import Container from "../components/Container";
+import FirstIcon from '../public/assets/icons/First';
 import EndIcon from '../public/assets/icons/End';
 import NextIcon from '../public/assets/icons/Next';
 
@@ -80,7 +81,7 @@ const Blog = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
               {currPage != 1 ? (
                 <>
                   <a onClick={e => callPage(e, 1)}>
-                    <EndIcon width="16" height="16" toLeftYn={true} />
+                    <FirstIcon width="16" height="16"/>
                   </a>
                   <a onClick={e => callPage(e, currPage - 1)}>
                     <NextIcon width="16" height="16" toLeftYn={true} />
