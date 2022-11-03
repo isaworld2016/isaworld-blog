@@ -84,7 +84,8 @@
   font-weight: bold;
   cursor:pointer;
 }
-.asdf{
+
+.pagination-icon-rotate180{
   transform:rotate(180deg);
 }
 

@@ -99,9 +99,7 @@ const Blog = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                       + (Number(a) == currPage ? ' current' : '')
                       + (a.includes('.') ? ' cursor-unset' : '')
                     }
-                  >
-                    {a}
-                  </div>
+                  >{a}</div>
                 ))}
               </div>
             </nav>
