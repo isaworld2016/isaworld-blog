@@ -4,7 +4,6 @@ import { InferGetStaticPropsType } from "next";
 import React, { useEffect, useState } from 'react';
 import BlogPost from "../components/BlogPost";
 import Container from "../components/Container";
-import FirstIcon from '../public/assets/icons/First';
 import EndIcon from '../public/assets/icons/End';
 import NextIcon from '../public/assets/icons/Next';
 
@@ -81,7 +80,7 @@ const Blog = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
               {currPage != 1 ? (
                 <>
                   <a onClick={e => callPage(e, 1)}>
-                    <FirstIcon width="16" height="16"/>
+                    <EndIcon width="16" height="16" toLeftYn={true} />
                   </a>
                   <a onClick={e => callPage(e, currPage - 1)}>
                     <NextIcon width="16" height="16" toLeftYn={true} />
@@ -92,11 +91,15 @@ const Blog = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
             <nav className="navigation pagination">
               <div className="nav-links">
                 {showPages().map((a) => (
-                  <div key={a} onClick={(e) => callPage(e, Number(a))} className={
-                    'page-numbers'
-                    + (Number(a) == currPage ? ' current' : '')
-                    + (a.includes('.') ? ' cursor-unset' : '')
-                  }>
+                  <div
+                    key={a}
+                    onClick={(e) => a.includes('.') ? '' : callPage(e, Number(a))}
+                    className={
+                      'page-numbers'
+                      + (Number(a) == currPage ? ' current' : '')
+                      + (a.includes('.') ? ' cursor-unset' : '')
+                    }
+                  >
                     {a}
                   </div>
                 ))}
