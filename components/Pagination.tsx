@@ -6,12 +6,11 @@ import { IPagination } from '../common/interface/IPagination';
 
 const Pagination = (props: IPagination) => {
   const maxPage = Math.ceil(props.totalCount / metadata.rowsPerPage);
-  const calFromPage = (param: number): number => metadata.rowsPerPage * (param - 1);
-  const calToPage = (param: number): number => metadata.rowsPerPage * param;
 
   useEffect(() => {
-    props.setToPage(calToPage(props.currPage));
-    props.setFromPage(calFromPage(props.currPage));
+    props.setToPage(props.calPage.to(props.currPage));
+    props.setFromPage(props.calPage.from(props.currPage));
+
   }, [props.currPage])
 
   const showPages = () => {

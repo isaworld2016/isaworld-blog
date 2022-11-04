@@ -8,15 +8,22 @@ import Pagination from '../components/Pagination';
 
 const Blog = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   const [currPage, setCurrPage] = useState<number>(1);
-  const [fromPage, setFromPage] = useState<number>(metadata.rowsPerPage * (currPage - 1));
-  const [toPage, setToPage] = useState<number>(metadata.rowsPerPage * currPage);
-  const postSlider = (posts: Post[]): Post[] => posts.slice(fromPage, toPage);
+  const calPage = {
+    from(param:number):number {
+      return metadata.rowsPerPage * (param - 1)
+    },
+    to(param: number):number {
+      return metadata.rowsPerPage * param
+    }
+  }
+  const [fromPage, setFromPage] = useState<number>(calPage.from(currPage));
+  const [toPage, setToPage] = useState<number>(calPage.to(currPage));
 
   return (
     <Container>
       <div className={`mt-10 flex flex-col`}>
         <div>total: {props.pagination?.totalCount}</div>
-        {postSlider(props.posts).map((post) => (
+        {props.posts.slice(fromPage, toPage).map((post) => (
           <BlogPost
             date={post.date}
             title={post.title}
@@ -31,6 +38,7 @@ const Blog = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
           currPage={currPage}
           setFromPage={setFromPage}
           setToPage={setToPage}
+          calPage={calPage}
         />
       </div>
     </Container>
