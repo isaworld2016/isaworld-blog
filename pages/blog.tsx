@@ -3,6 +3,7 @@ import metadata from "data/metadata";
 import { InferGetStaticPropsType } from "next";
 import React, { useState } from 'react';
 import BlogPost from "../components/BlogPost";
+import SearchBar from "../components/SearchBar";
 import Container from "../components/Container";
 import Pagination from '../components/Pagination';
 
@@ -22,7 +23,16 @@ const Blog = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <Container>
       <div className={`mt-10 flex flex-col`}>
-        <div>total: {props.pagination?.totalCount}</div>
+        <SearchBar />
+        <div className={`border-b-2 pt-20 pb-1`}>
+          <span>
+            검색결과{" "}
+            <span className="text-red-400 font-medium">
+              {props.pagination?.totalCount}
+            </span>
+            건
+          </span>
+        </div>
         {props.posts.slice(fromPage, toPage).map((post) => (
           <BlogPost
             date={post.date}
