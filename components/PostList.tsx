@@ -7,7 +7,7 @@ const PostList = ({ posts, totalCount }: { posts: Post[]; totalCount: number }) 
       <div className={`border-b-2 pt-20 pb-1`}>
         <span>
           검색결과{" "}
-          <span className="text-red-400 font-medium">{totalCount}</span>
+          <span className="text-red-400 font-bold">{totalCount}</span>
           건
         </span>
       </div>
