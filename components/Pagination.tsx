@@ -1,33 +1,31 @@
-import React, { useEffect } from 'react';
-import metadata from "data/metadata";
-import EndIcon from '../public/assets/icons/End';
-import NextIcon from '../public/assets/icons/Next';
-import usePagination from 'hooks/usePagination';
+import React, { Dispatch, SetStateAction } from "react";
+import EndIcon from "../public/assets/icons/End";
+import NextIcon from "../public/assets/icons/Next";
+
+interface Props {
+  setFromPage: Dispatch<SetStateAction<number>>;
+  setToPage: Dispatch<SetStateAction<number>>;
+  calPage: {
+    from(param: number): number;
+    to(param: number): number;
+  };
+  toPage: number;
+  fromPage: number;
+  currPage: number;
+  maxPage: number;
+  setCurrPage: Dispatch<SetStateAction<number>>;
+}
 
 const Pagination = ({
-  setCurrPage,
+  setFromPage,
+  setToPage,
+  calPage,
+  toPage,
+  fromPage,
   currPage,
-  totalCount,
-}: {
-  setCurrPage: Function;
-  currPage: number;
-  totalCount: number;
-}) => {
-  const {
-    setFromPage,
-    setToPage,
-    calPage,
-    toPage,
-    fromPage,
-  } = usePagination();
-
-  const maxPage = Math.ceil(totalCount / metadata.rowsPerPage);
-
-  useEffect(() => {
-    setToPage(calPage.to(currPage));
-    setFromPage(calPage.from(currPage));
-  }, [currPage]);
-
+  maxPage,
+  setCurrPage,
+}: Props) => {
   const showPages = () => {
     let output = Array.from({ length: maxPage }, (v, i) => String(i + 1));
 

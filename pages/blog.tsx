@@ -3,27 +3,22 @@ import { InferGetStaticPropsType } from "next";
 import PostList from "../components/PostList";
 import SearchBar from "../components/SearchBar";
 import Container from "../components/Container";
-import Pagination from '../components/Pagination';
-import TopBotton from '../components/TopBotton';
+import Pagination from "../components/Pagination";
+import TopBotton from "../components/TopBotton";
 import usePagination from "hooks/usePagination";
-import { useEffect } from "react";
 
 const Blog = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
-   const {
-     setCurrPage,
-     fromPage,
-     toPage,
-     currPage,
-     setToPage,
-     setFromPage,
-     calPage,
-   } = usePagination();
+  const {
+    setFromPage,
+    setToPage,
+    calPage,
+    toPage,
+    fromPage,
+    currPage,
+    maxPage,
+    setCurrPage,
+  } = usePagination<Post>({ posts });
 
-  useEffect(() => {
-    setToPage(calPage.to(currPage));
-    setFromPage(calPage.from(currPage));
-  }, [currPage]);
-  
   return (
     <Container>
       <div className={`mt-10 flex flex-col`}>
@@ -33,9 +28,14 @@ const Blog = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
           totalCount={posts.length}
         />
         <Pagination
-          setCurrPage={setCurrPage}
+          setFromPage={setFromPage}
+          setToPage={setToPage}
+          calPage={calPage}
+          toPage={toPage}
+          fromPage={fromPage}
           currPage={currPage}
-          totalCount={posts.length}
+          maxPage={maxPage}
+          setCurrPage={setCurrPage}
         />
         <TopBotton />
       </div>
@@ -50,7 +50,7 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      posts
+      posts,
     },
   };
 };
