@@ -7,16 +7,16 @@ import SearchBar from "../components/SearchBar";
 import Container from "../components/Container";
 import Pagination from '../components/Pagination';
 
-const Blog = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
+const Blog = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const [currPage, setCurrPage] = useState<number>(1);
   const calPage = {
-    from(param:number):number {
-      return metadata.rowsPerPage * (param - 1)
+    from(param: number): number {
+      return metadata.rowsPerPage * (param - 1);
     },
-    to(param: number):number {
-      return metadata.rowsPerPage * param
-    }
-  }
+    to(param: number): number {
+      return metadata.rowsPerPage * param;
+    },
+  };
   const [fromPage, setFromPage] = useState<number>(calPage.from(currPage));
   const [toPage, setToPage] = useState<number>(calPage.to(currPage));
 
@@ -24,12 +24,9 @@ const Blog = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
     <Container>
       <div className={`mt-10 flex flex-col`}>
         <SearchBar />
-        <PostList
-          posts={props.posts.slice(fromPage, toPage)}
-          totalCount={props.posts.length}
-        />
+        <PostList posts={posts.slice(fromPage, toPage)} totalCount={posts.length} />
         <Pagination
-          totalCount={props.posts.length}
+          totalCount={posts.length}
           setCurrPage={setCurrPage}
           currPage={currPage}
           setFromPage={setFromPage}
@@ -42,7 +39,7 @@ const Blog = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
 };
 
 export const getStaticProps = async () => {
-  let posts = allPosts.sort(
+  const posts = allPosts.sort(
     (a, b) => Number(new Date(b.date)) - Number(new Date(a.date))
   );
 
