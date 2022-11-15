@@ -2,7 +2,7 @@ import { allPosts, Post } from "contentlayer/generated";
 import metadata from "data/metadata";
 import { InferGetStaticPropsType } from "next";
 import React, { useState } from 'react';
-import BlogPost from "../components/BlogPost";
+import PostList from "../components/PostList";
 import SearchBar from "../components/SearchBar";
 import Container from "../components/Container";
 import Pagination from '../components/Pagination';
@@ -33,15 +33,7 @@ const Blog = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
             건
           </span>
         </div>
-        {props.posts.slice(fromPage, toPage).map((post) => (
-          <BlogPost
-            date={post.date}
-            title={post.title}
-            des={post.description}
-            slug={post._raw.flattenedPath}
-            key={post._id}
-          />
-        ))}
+        <PostList posts={props.posts.slice(fromPage, toPage)} />
         <Pagination
           totalCount={props.pagination?.totalCount}
           setCurrPage={setCurrPage}

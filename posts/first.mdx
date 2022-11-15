@@ -25,7 +25,7 @@ description: 페이지네이션을 구현하기 위한 스텝들..
 한 페이지당 보여줄 포스팅: 5개라면,
 
 
-```
+```js showLineNumbers
 80개 / 5개씩 = 1페이지 => 80/5 = {(5*0)+1}번 ~ {(1 + 5) - 1}번 = 1번 ~ 5번
 2페이지 = {(5*1) + 1} 번 ~ {(6 + 5) - 1}번 = 6번 ~ 10번
 
@@ -36,7 +36,7 @@ description: 페이지네이션을 구현하기 위한 스텝들..
 
 만약 3페이지가 궁금하다면?
 
-```
+```js showLineNumbers
 p = 3;
 {rowsPerPage(p-1) + 1} ~ (rowsPerPage(n-1) + rowsPerPage)
 (5 * 2 + 1) ~ (5 * 2 + 5)
@@ -74,7 +74,7 @@ to = (rowsPerPag * currPage) + 1
 ---
 정리하자면,
 
-```
+```js showLineNumbers
 const p = 1;
 const rowsPerPage = 5;
 totalCount = 80;
