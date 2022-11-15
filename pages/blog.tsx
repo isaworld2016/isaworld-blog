@@ -24,18 +24,12 @@ const Blog = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
     <Container>
       <div className={`mt-10 flex flex-col`}>
         <SearchBar />
-        <div className={`border-b-2 pt-20 pb-1`}>
-          <span>
-            검색결과{" "}
-            <span className="text-red-400 font-medium">
-              {props.pagination?.totalCount}
-            </span>
-            건
-          </span>
-        </div>
-        <PostList posts={props.posts.slice(fromPage, toPage)} />
+        <PostList
+          posts={props.posts.slice(fromPage, toPage)}
+          totalCount={props.posts.length}
+        />
         <Pagination
-          totalCount={props.pagination?.totalCount}
+          totalCount={props.posts.length}
           setCurrPage={setCurrPage}
           currPage={currPage}
           setFromPage={setFromPage}
@@ -54,10 +48,7 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      posts,
-      pagination: {
-        totalCount: allPosts.length,
-      },
+      posts
     },
   };
 };

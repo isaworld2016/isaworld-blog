@@ -1,9 +1,16 @@
 import BlogPost from './BlogPost';
 import { Post } from "contentlayer/generated";
 
-const PostList = ({ posts }: { posts: Post[] }) => {
+const PostList = ({ posts, totalCount }: { posts: Post[]; totalCount: number }) => {
   return (
     <>
+      <div className={`border-b-2 pt-20 pb-1`}>
+        <span>
+          검색결과{" "}
+          <span className="text-red-400 font-medium">{totalCount}</span>
+          건
+        </span>
+      </div>
       {posts.map((post: Post) => (
         <BlogPost
           date={post.date.slice(0, 10)}
