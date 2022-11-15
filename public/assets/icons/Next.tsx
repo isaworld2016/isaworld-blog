@@ -1,4 +1,4 @@
-import { INextIcon } from "./interface/IIcon";
+import { IIcon as INextIcon } from "./interface/IIcon";
 
 function NextIcon({ width, height, fill, toLeftYn }: INextIcon) {
   return (

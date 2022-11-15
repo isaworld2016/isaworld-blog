@@ -4,17 +4,40 @@ import PostList from "../components/PostList";
 import SearchBar from "../components/SearchBar";
 import Container from "../components/Container";
 import Pagination from '../components/Pagination';
+import TopBotton from '../components/TopBotton';
 import usePagination from "hooks/usePagination";
+import { useEffect } from "react";
 
 const Blog = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
-   const { fromPage, toPage } = usePagination();
+   const {
+     setCurrPage,
+     fromPage,
+     toPage,
+     currPage,
+     setToPage,
+     setFromPage,
+     calPage,
+   } = usePagination();
 
+  useEffect(() => {
+    setToPage(calPage.to(currPage));
+    setFromPage(calPage.from(currPage));
+  }, [currPage]);
+  
   return (
     <Container>
       <div className={`mt-10 flex flex-col`}>
         <SearchBar />
-        <PostList posts={posts.slice(fromPage, toPage)} totalCount={posts.length} />
-        <Pagination totalCount={posts.length} />
+        <PostList
+          posts={posts.slice(fromPage, toPage)}
+          totalCount={posts.length}
+        />
+        <Pagination
+          setCurrPage={setCurrPage}
+          currPage={currPage}
+          totalCount={posts.length}
+        />
+        <TopBotton />
       </div>
     </Container>
   );

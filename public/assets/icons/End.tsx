@@ -1,4 +1,4 @@
-import { IEndIcon } from "./interface/IIcon";
+import { IIcon as IEndIcon } from "./interface/IIcon";
 
 function EndIcon({ width, height, fill, toLeftYn }: IEndIcon) {
   return (

@@ -1,11 +1,4 @@
-export interface INextIcon {
-  width: string,
-  height: string,
-  fill?: string,
-  toLeftYn?: boolean
-}
-
-export interface IEndIcon {
+export interface IIcon {
   width: string,
   height: string,
   fill?: string,

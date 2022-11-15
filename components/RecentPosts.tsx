@@ -9,8 +9,8 @@ const RecentPosts = ({
     <section className={`mt-10`}>
       <h1 className={`text-3xl font-extrabold`}>최근 게시물</h1>
       <div className={`flex flex-col`}>
-        {posts.slice(0, 3).map((post: Post) => (
-          <div className="w-full my-2 transition ease-in-out hover:-translate-x-1.5">
+        {posts.slice(0, 3).map((post: Post, key: number) => (
+          <div key={key} className="w-full my-2 transition ease-in-out hover:-translate-x-1.5">
             <Link key={post._id} href={`/blog/${post._raw.flattenedPath}`} passHref>
               <a>
                 <div className="mt-5 flex justify-between">
