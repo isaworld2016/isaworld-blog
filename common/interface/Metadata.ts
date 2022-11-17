@@ -1,4 +1,4 @@
-export interface IMetadata {
+export interface Metadata {
   title: string;
   description: string;
   author: string;

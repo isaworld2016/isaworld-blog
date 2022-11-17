@@ -1,20 +1,6 @@
-import React, { Dispatch, SetStateAction } from "react";
 import EndIcon from "../public/assets/icons/End";
 import NextIcon from "../public/assets/icons/Next";
-
-interface Props {
-  setFromPage: Dispatch<SetStateAction<number>>;
-  setToPage: Dispatch<SetStateAction<number>>;
-  calPage: {
-    from(param: number): number;
-    to(param: number): number;
-  };
-  toPage: number;
-  fromPage: number;
-  currPage: number;
-  maxPage: number;
-  setCurrPage: Dispatch<SetStateAction<number>>;
-}
+import { PaginationProps } from "common/interface/PaginationProps";
 
 const Pagination = ({
   setFromPage,
@@ -25,7 +11,7 @@ const Pagination = ({
   currPage,
   maxPage,
   setCurrPage,
-}: Props) => {
+}: PaginationProps) => {
   const showPages = () => {
     let output = Array.from({ length: maxPage }, (v, i) => String(i + 1));
 

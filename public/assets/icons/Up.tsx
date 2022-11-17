@@ -1,6 +1,6 @@
-import { IIcon as IUpIcon } from "./interface/IIcon";
+import { Icon as UpIcon } from "./interface/Icon";
 
-function UpIcon({ width, height, fill, toLeftYn }: IUpIcon) {
+function UpIcon({ width, height, fill }: UpIcon) {
   return (
     <svg
       clipRule="evenodd"

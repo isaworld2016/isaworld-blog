@@ -1,7 +1,12 @@
 import BlogPost from './BlogPost';
 import { Post } from "contentlayer/generated";
 
-const PostList = ({ posts, totalCount }: { posts: Post[]; totalCount: number }) => {
+interface PostList {
+  posts: Post[];
+  totalCount: number;
+}
+
+const PostList = ({ posts, totalCount }: PostList) => {
   return (
     <>
       <div className={`border-b-2 w-2/3 pt-20 pb-1`}>

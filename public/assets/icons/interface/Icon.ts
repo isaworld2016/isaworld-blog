@@ -1,4 +1,4 @@
-export interface IIcon {
+export interface Icon {
   width: string,
   height: string,
   fill?: string,

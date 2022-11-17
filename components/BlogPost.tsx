@@ -1,9 +1,9 @@
-import { IBlogPost } from "common/interface/IBlogPost";
+import { BlogPost } from "common/interface/BlogPost";
 import Link from "next/link";
 
-const BlogPost = (param: IBlogPost) => {
+const BlogPost = (param: BlogPost) => {
   return (
-    <div className="w-full my-5 transition ease-in-out hover:-translate-x-1.5 hover:text-yellow-400/80">
+    <div className="w-full my-5 transition ease-in-out hover:-translate-x-1.5">
       <Link href={`/blog/${param.slug}`} passHref>
         <a>
           <div className="font-medium text-xs text-gray-400">{param.date}</div>

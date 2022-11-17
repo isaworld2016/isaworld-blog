@@ -1,6 +1,6 @@
-import { IIcon as IEndIcon } from "./interface/IIcon";
+import { Icon as EndIcon } from "./interface/Icon";
 
-function EndIcon({ width, height, fill, toLeftYn }: IEndIcon) {
+function EndIcon({ width, height, fill, toLeftYn }: EndIcon) {
   return (
     <svg
       className={toLeftYn ? "icon__previous--rotate-180" : ""}

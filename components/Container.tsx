@@ -2,6 +2,7 @@ import Image from "next/image";
 import Head from "next/head";
 import Nav from "./Nav";
 import metadata from "../data/metadata";
+import Bottom from '../components/Bottom';
 
 const Container = (props: any) => {
   const meta = {
@@ -36,6 +37,7 @@ const Container = (props: any) => {
         <Nav />
       </header>
       <main className={`w-full max-w-3xl`}>{props.children}</main>
+      <Bottom />
     </div>
   );
 };

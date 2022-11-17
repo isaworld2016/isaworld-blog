@@ -1,4 +1,4 @@
-export interface IBlogPost {
+export interface BlogPost {
   slug:string,
   date:string,
   title:string,

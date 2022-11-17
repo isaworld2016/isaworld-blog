@@ -1,6 +1,6 @@
-import { IIcon as INextIcon } from "./interface/IIcon";
+import { Icon as NextIcon } from "./interface/Icon";
 
-function NextIcon({ width, height, fill, toLeftYn }: INextIcon) {
+function NextIcon({ width, height, fill, toLeftYn }: NextIcon) {
   return (
     <svg
       className={toLeftYn ? "icon__next--rotate-180" : ""}
