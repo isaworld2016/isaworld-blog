@@ -1,9 +1,9 @@
-import { ReactElement, ReactEventHandler, useState } from "react";
-const SearchBar = () => {
-  const [searchTitle, setSearchTitle] = useState("");
-  const onChangeSearchTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchTitle(e.target.value);
-  }
+interface SearchBarProps {
+  searchTitle: string;
+  onChangeSearchTitle: React.ChangeEventHandler<HTMLInputElement>;
+}
+const SearchBar = ({ searchTitle, onChangeSearchTitle }: SearchBarProps) => {
+
   return (
     <form className="fixed flex w-4/5 max-w-2xl">
       <input

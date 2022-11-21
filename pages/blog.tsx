@@ -6,6 +6,8 @@ import Container from "../components/Container";
 import Pagination from "../components/Pagination";
 import TopBotton from "../components/TopBotton";
 import usePagination from "hooks/usePagination";
+import useSearchPost from "hooks/useSearchPost";
+import { useEffect } from "react";
 
 const Blog = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const {
@@ -19,10 +21,20 @@ const Blog = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
     setCurrPage,
   } = usePagination<Post>({ posts });
 
+  const { searchTitle, searchPosts, onChangeSearchTitle, getSearchPost } =
+    useSearchPost(allPosts);
+
+  useEffect(() => {
+    getSearchPost();
+  }, [searchTitle])
+
   return (
     <Container>
       <div className={`mt-10 flex flex-col`}>
-        <SearchBar />
+        <SearchBar
+          searchTitle={searchTitle}
+          onChangeSearchTitle={onChangeSearchTitle}
+        />
         <PostList
           posts={posts.slice(fromPage, toPage)}
           totalCount={posts.length}
