@@ -7,9 +7,11 @@ import Pagination from "../components/Pagination";
 import TopBotton from "../components/TopBotton";
 import usePagination from "hooks/usePagination";
 import useSearchPost from "hooks/useSearchPost";
-import { useEffect } from "react";
 
 const Blog = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
+  const { searchTitle, searchPosts, onChangeSearchTitle, getSearchPost } =
+    useSearchPost(posts);
+
   const {
     setFromPage,
     setToPage,
@@ -19,14 +21,7 @@ const Blog = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
     currPage,
     maxPage,
     setCurrPage,
-  } = usePagination<Post>({ posts });
-
-  const { searchTitle, searchPosts, onChangeSearchTitle, getSearchPost } =
-    useSearchPost(allPosts);
-
-  useEffect(() => {
-    getSearchPost();
-  }, [searchTitle])
+  } = usePagination<Post>({ posts: searchPosts });
 
   return (
     <Container>
@@ -36,19 +31,22 @@ const Blog = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
           onChangeSearchTitle={onChangeSearchTitle}
         />
         <PostList
-          posts={posts.slice(fromPage, toPage)}
-          totalCount={posts.length}
+          posts={searchPosts.slice(fromPage, toPage)}
+          totalCount={searchPosts.length}
         />
-        <Pagination
-          setFromPage={setFromPage}
-          setToPage={setToPage}
-          calPage={calPage}
-          toPage={toPage}
-          fromPage={fromPage}
-          currPage={currPage}
-          maxPage={maxPage}
-          setCurrPage={setCurrPage}
-        />
+        {searchPosts.length != 0 ?
+          <Pagination
+            setFromPage={setFromPage}
+            setToPage={setToPage}
+            calPage={calPage}
+            toPage={toPage}
+            fromPage={fromPage}
+            currPage={currPage}
+            maxPage={maxPage}
+            setCurrPage={setCurrPage}
+          />
+          : <></>
+        }
         <TopBotton />
       </div>
     </Container>

@@ -1,9 +1,8 @@
 import { Post } from 'contentlayer/generated';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 
 export default function useSearchPost(allPosts: Post[]) {
   const [searchTitle, setSearchTitle] = useState("");
-  const [searchPosts, setSearchPosts] = useState([]);
 
   const onChangeSearchTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTitle(e.target.value);
@@ -11,13 +10,18 @@ export default function useSearchPost(allPosts: Post[]) {
 
   const getSearchPost = () => {
     if (searchTitle !== "") {
-      const temp = allPosts.filter((post) => new RegExp(searchTitle, "gim").test(post.title));
-      console.log("temp", temp)
-      // setSearchPosts(temp); // 이거 왜 안됨...
+      const temp: Post[] = allPosts.filter((post) => {
+        return new RegExp(searchTitle.replace(/ /g, ''), "gim").test(post.title.replace(/ /g, ''))
+          || new RegExp(searchTitle.replace(/ /g, ''), "gim").test(post.description.replace(/ /g, ''))
+          || new RegExp(searchTitle.replace(/ /g, ''), "gim").test(post.body.raw.replace(/ /g, ''))
+      });
+      return temp;
     } else {
-      setSearchPosts([]);
+      return allPosts;
     }
   }
+
+  const searchPosts = useMemo(() => getSearchPost(), [searchTitle]);
 
   return {
     searchTitle,

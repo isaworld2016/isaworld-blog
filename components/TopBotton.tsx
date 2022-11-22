@@ -18,11 +18,11 @@ const TopBotton = () => {
 
   return (
     <>
-      {isScroll ? (
-        <a href="#" className="fixed bottom-10 right-10">
-          <UpIcon width="60" height="60" fill="black" />
+      {isScroll && (
+        <a href="#" className="fixed bottom-5 right-5">
+          <UpIcon width="40" height="40" fill="black" />
         </a>
-      ): <></>}
+      )}
     </>
   );
 }
