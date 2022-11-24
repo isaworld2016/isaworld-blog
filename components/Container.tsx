@@ -23,7 +23,7 @@ const Container = (props: any) => {
         className={`w-full max-w-3xl flex flex-row justify-between items-center my-1`}
       >
         <Link href={`/`} passHref>
-          <div className={`flex flex-row items-center`}>
+          <div className={`flex flex-row items-center cursor-pointer`}>
             <Image
               src={`/isa.jpeg`}
               alt="isaworld_logo"
