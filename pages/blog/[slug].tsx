@@ -1,24 +1,30 @@
 import Container from "components/Container";
+import BlogContent from "components/BlogContent";
 import { allPosts } from "contentlayer/generated";
 import { InferGetStaticPropsType, GetStaticProps, GetStaticPaths } from "next";
 import { useMDXComponent } from "next-contentlayer/hooks";
+import { MDXProvider, Components } from "@mdx-js/react";
 
 const Post = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const MDXComponent = useMDXComponent(post?.body?.code ?? '');
-  
-  const customMeta: {title?: string, description?: string, date?: string} = {
-    title: post?.title,
-    description: post?.description,
-    date: new Date(post?.date ?? '').toISOString(),
+  const MDXComponent = useMDXComponent(post.body.code);
+
+  interface CustomMeta {
+    title: string;
+    description: string;
+    date: string
+  }
+  const customMeta: CustomMeta = {
+    title: post.title,
+    description: post.description,
+    date: new Date(post.date).toISOString(),
   };
 
   return (
-    <Container customMeta={customMeta}>
-      <div className="mt-10 prose">
-        <h1 className="text-sky-700">{post?.title}</h1>
-        <MDXComponent />
-      </div>
-    </Container>
+    <MDXProvider components={post.body.code}>
+      <Container customMeta={customMeta}>
+        <BlogContent post={post} MDXComponent={MDXComponent} />
+      </Container>
+    </MDXProvider>
   );
 };
 
