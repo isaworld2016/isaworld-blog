@@ -3,7 +3,7 @@ import BlogContent from "components/BlogContent";
 import { allPosts } from "contentlayer/generated";
 import { InferGetStaticPropsType, GetStaticProps, GetStaticPaths } from "next";
 import { useMDXComponent } from "next-contentlayer/hooks";
-import { MDXProvider, Components } from "@mdx-js/react";
+import { MDXProvider } from "@mdx-js/react";
 import TopBotton from "components/TopBotton";
 
 const Post = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {

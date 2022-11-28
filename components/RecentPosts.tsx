@@ -22,9 +22,6 @@ const RecentPosts = ({
               <a>
                 <div className="mt-3 flex justify-between">
                   <div className={`font-medium text-xl`}>{post.title}</div>
-                  {/* <div className={`text-right font-light text-gray-400`}>
-                    {post.date}
-                  </div> */}
                 </div>
                 <div className={`font-light`}>{post.description}</div>
               </a>
