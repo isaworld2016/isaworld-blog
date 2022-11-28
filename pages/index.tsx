@@ -20,7 +20,7 @@ const Home = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
             className={`rounded-3xl`}
           />
           <span
-            className={`absolute top-12 font-extrabold italic text-white text-5xl md:text-9xl text flex justify-center w-full drop-shadow-lg`}
+            className={`absolute top-12 font-extrabold italic text-white text-5xl md:text-9xl text flex justify-center w-full drop-shadow-lg opacity-50`}
           >
             {metadata.title}
           </span>

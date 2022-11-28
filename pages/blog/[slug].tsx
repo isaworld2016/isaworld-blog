@@ -4,6 +4,7 @@ import { allPosts } from "contentlayer/generated";
 import { InferGetStaticPropsType, GetStaticProps, GetStaticPaths } from "next";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import { MDXProvider, Components } from "@mdx-js/react";
+import TopBotton from "components/TopBotton";
 
 const Post = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const MDXComponent = useMDXComponent(post.body.code);
@@ -23,6 +24,7 @@ const Post = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
     <MDXProvider components={post.body.code}>
       <Container customMeta={customMeta}>
         <BlogContent post={post} MDXComponent={MDXComponent} />
+        <TopBotton />
       </Container>
     </MDXProvider>
   );

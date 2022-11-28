@@ -2,7 +2,7 @@ import { NavLinks } from "../common/interface/NavLinks";
 
 const navlinks: NavLinks[] = [
   { title: "Home", link: "/" },
-  { title: "Portfolio", link: "/portfolio" },
+  { title: "About", link: "/about" },
   { title: "Blog", link: "/blog" },
 ];
 
