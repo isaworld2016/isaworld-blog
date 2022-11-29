@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useRef, useState, useLayoutEffect } from "react";
 import SearchIcon from "../public/assets/icons/Search";
 import CancelIcon from "../public/assets/icons/Cancel";
 import HamburgerIcon from "../public/assets/icons/Hamburger";
@@ -6,10 +6,12 @@ import HamburgerIcon from "../public/assets/icons/Hamburger";
 interface SearchBarProps {
   searchTitle: string;
   onChangeSearchTitle: React.ChangeEventHandler<HTMLInputElement>;
+  clearSearchInput: () => void;
 }
 const SearchBar = ({
   searchTitle,
   onChangeSearchTitle,
+  clearSearchInput,
 }: SearchBarProps) => {
   const [questionYn, setQuestionYn] = useState<boolean>(false);
   const [categoryYn, setCategoryYn] = useState<boolean>(false);
@@ -17,10 +19,17 @@ const SearchBar = ({
   const changeButton = () => setQuestionYn(!questionYn);
   const toggleCategoryIcon = () => setCategoryYn(!categoryYn);
 
+  const inputRef = useRef<HTMLInputElement>(null);
+  useLayoutEffect(() => {
+    if (inputRef.current !== null) inputRef.current.focus();
+  });
+
   const getInputClass = () => {
     const base = "question__input";
-    if (questionYn) return base.concat(` show`);
-    else return base;
+    if (questionYn) {
+      clearSearchInput();
+      return base.concat(` show`);
+    } else return base;
   };
 
   const inputClass = useMemo(() => getInputClass(), [questionYn]);
@@ -29,8 +38,10 @@ const SearchBar = ({
     <div className="absolute inline-flex items-center w-full max-w-3xl">
       <form className={inputClass}>
         <input
+          ref={inputRef}
+          autoComplete="off"
           className="px-3 py-2 w-9/12 bg-gray-200 rounded-md focus:outline-none"
-          placeholder="제목, 내용을 입력하세요"
+          placeholder="검색어를 입력하세요 😎"
           value={searchTitle}
           onChange={onChangeSearchTitle}
         />

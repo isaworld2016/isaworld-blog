@@ -9,8 +9,13 @@ import usePagination from "hooks/usePagination";
 import useSearchPost from "hooks/useSearchPost";
 
 const Blog = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const { searchTitle, searchPosts, onChangeSearchTitle, getSearchPost } =
-    useSearchPost(posts);
+  const {
+    searchTitle,
+    searchPosts,
+    onChangeSearchTitle,
+    getSearchPost,
+    clearSearchInput,
+  } = useSearchPost(posts);
 
   const {
     setFromPage,
@@ -29,12 +34,13 @@ const Blog = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
         <SearchBar
           searchTitle={searchTitle}
           onChangeSearchTitle={onChangeSearchTitle}
+          clearSearchInput={clearSearchInput}
         />
         <PostList
           posts={searchPosts.slice(fromPage, toPage)}
           totalCount={searchPosts.length}
         />
-        {searchPosts.length != 0 ?
+        {searchPosts.length != 0 ? (
           <Pagination
             setFromPage={setFromPage}
             setToPage={setToPage}
@@ -45,8 +51,9 @@ const Blog = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
             maxPage={maxPage}
             setCurrPage={setCurrPage}
           />
-          : <></>
-        }
+        ) : (
+          <></>
+        )}
         <TopBotton />
       </div>
     </Container>

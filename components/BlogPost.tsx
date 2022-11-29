@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const BlogPost = (param: BlogPost) => {
   return (
-    <div className="w-full my-4 transition ease-in-out hover:-translate-x-1.5">
+    <div className="w-full my-5 transition ease-in-out hover:-translate-x-1.5">
       <Link href={`/blog/${param.slug}`} passHref>
         <a>
           <div className="translate-y-1">

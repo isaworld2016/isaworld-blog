@@ -8,6 +8,8 @@ export default function useSearchPost(allPosts: Post[]) {
     setSearchTitle(e.target.value);
   };
 
+  const clearSearchInput = () => setSearchTitle("");
+
   const getSearchPost = () => {
     if (searchTitle !== "") {
       const temp: Post[] = allPosts.filter((post) => {
@@ -27,6 +29,7 @@ export default function useSearchPost(allPosts: Post[]) {
     searchTitle,
     searchPosts,
     onChangeSearchTitle,
-    getSearchPost
+    getSearchPost,
+    clearSearchInput
   }
 }
