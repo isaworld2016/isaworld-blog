@@ -1,9 +1,8 @@
 import { Icon as CancelIcon } from "./interface/Icon";
 
-function CancelIcon({ width, height, fill, className }: CancelIcon) {
+function CancelIcon({ width, height, fill }: CancelIcon) {
   return (
     <svg
-      className={className}
       xmlns="http://www.w3.org/2000/svg"
       width={width}
       height={height}
