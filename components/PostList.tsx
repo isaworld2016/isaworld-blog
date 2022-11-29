@@ -8,11 +8,11 @@ interface PostList {
 
 const PostList = ({ posts, totalCount }: PostList) => {
   return (
-    <>
-      <div className={`border-b-2 w-2/3 pt-20 pb-1`}>
-        <section>
-          검색결과 <span className="text-red-400 font-bold">{totalCount}</span>
-          건
+    <div className={`ml-1`}>
+      <div className={`border-b-2 w-3/5 pt-14 pb-1`}>
+        <section className={'text-sm'}>
+          검색 결과는{" "}
+          <span className="text-red-400 font-bold">{totalCount}</span>건 입니다.
         </section>
       </div>
       {posts.map((post: Post) => (
@@ -22,9 +22,10 @@ const PostList = ({ posts, totalCount }: PostList) => {
           des={post.description}
           slug={post._raw.flattenedPath}
           key={post._id}
+          category={post.category}
         />
       ))}
-    </>
+    </div>
   );
 };
 export default PostList;

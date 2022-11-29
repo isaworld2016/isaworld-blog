@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
-import UpIcon from "../public/assets/icons/Up";
+import BackIcon from "../public/assets/icons/Back";
+import { useRouter } from "next/router";
 
-const TopBotton = () => {
+const BackBotton = () => {
+  const router = useRouter();
   const [isScroll, setIsScroll] = useState(false);
 
   useEffect(() => {
@@ -19,11 +21,11 @@ const TopBotton = () => {
   return (
     <>
       {isScroll && (
-        <a href="#" className="fixed bottom-5 right-5">
-          <UpIcon width="35" height="35" fill="black" />
-        </a>
+        <button onClick={() => router.back()} className="fixed bottom-16 right-5">
+          <BackIcon width="35" height="35" fill="black" />
+        </button>
       )}
     </>
   );
 }
-export default TopBotton;
+export default BackBotton;

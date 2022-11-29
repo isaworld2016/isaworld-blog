@@ -2,7 +2,7 @@ import { Post } from "contentlayer/generated";
 
 interface BlogContent {
   post: Post;
-  MDXComponent: any; // React.ComponentType<any> ??
+  MDXComponent: React.ComponentType<any>;
 }
 const BlogContent = ({ post, MDXComponent}: BlogContent) => {
   return (
