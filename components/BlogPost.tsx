@@ -6,7 +6,7 @@ const BlogPost = (param: BlogPost) => {
     <div className="w-full my-8 transition ease-in-out hover:-translate-x-1.5">
       <Link href={`/blog/${param.slug}`} passHref>
         <a>
-          <div className={`font-extrabold text-gray-600 text-2xl`}>
+          <div className={`font-extrabold text-gray-800 text-2xl`}>
             {param.title}
           </div>
           <div className={`font-light text-gray-400 text-xl mt-1`}>

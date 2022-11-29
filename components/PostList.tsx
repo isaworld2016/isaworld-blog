@@ -8,13 +8,11 @@ interface PostList {
 
 const PostList = ({ posts, totalCount }: PostList) => {
   return (
-    <div className={`ml-1`}>
-      <div className={`border-b-2 w-3/5 pt-14 pb-1`}>
-        <section className={'text-sm'}>
-          검색 결과는{" "}
-          <span className="text-red-400 font-bold">{totalCount}</span>건 입니다.
-        </section>
-      </div>
+    <div>
+      <section className={'text-sm mt-2'}>
+        검색 결과{" "}
+        <span className="text-red-400 font-bold">{totalCount}</span>
+      </section>
       {posts.map((post: Post) => (
         <BlogPost
           date={post.date.slice(0, 10)}

@@ -30,7 +30,7 @@ const Blog = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
 
   return (
     <Container>
-      <div className={`mt-10 flex flex-col`}>
+      <div className={`flex flex-col`}>
         <SearchBar
           searchTitle={searchTitle}
           onChangeSearchTitle={onChangeSearchTitle}

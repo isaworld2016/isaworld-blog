@@ -1,7 +1,6 @@
-import { useCallback, useMemo, useRef, useState, useLayoutEffect } from "react";
+import { useMemo, useRef, useState, useLayoutEffect } from "react";
 import SearchIcon from "../public/assets/icons/Search";
 import CancelIcon from "../public/assets/icons/Cancel";
-import HamburgerIcon from "../public/assets/icons/Hamburger";
 
 interface SearchBarProps {
   searchTitle: string;
@@ -24,50 +23,37 @@ const SearchBar = ({
     if (inputRef.current !== null) inputRef.current.focus();
   });
 
-  const getInputClass = () => {
-    const base = "question__input";
+  const getSearchClass = () => {
+    const base = "search right-36";
     if (questionYn) {
       clearSearchInput();
       return base.concat(` show`);
     } else return base;
   };
 
-  const inputClass = useMemo(() => getInputClass(), [questionYn]);
+  const searchClass = useMemo(() => getSearchClass(), [questionYn]);
 
   return (
-    <div className="absolute inline-flex items-center w-full max-w-3xl">
-      <form className={inputClass}>
-        <input
-          ref={inputRef}
-          autoComplete="off"
-          className="px-3 py-2 w-9/12 bg-gray-200 rounded-md focus:outline-none"
-          placeholder="검색어를 입력하세요 😎"
-          value={searchTitle}
-          onChange={onChangeSearchTitle}
-        />
-      </form>
-      <a onClick={() => changeButton()} className="absolute right-16 left-auto">
-        {questionYn ? (
-          <CancelIcon width="18" height="18" fill="#E0E0E0" toLeftYn={true} />
-        ) : (
-          <SearchIcon width="19" height="19" fill="#E0E0E0" toLeftYn={true} />
-        )}
-      </a>
-      <a
-        onClick={() => toggleCategoryIcon()}
-        className="absolute right-8 left-auto"
-      >
-        {categoryYn ? (
-          <CancelIcon width="18" height="18" fill="#E0E0E0" toLeftYn={true} />
-        ) : (
-          <HamburgerIcon
-            width="18"
-            height="18"
-            fill="#E0E0E0"
-            toLeftYn={true}
+    <div className={searchClass}>
+      {questionYn ? (
+        <>
+          <input
+            ref={inputRef}
+            autoComplete="off"
+            className="search__input"
+            placeholder="검색어를 입력하세요 😎"
+            value={searchTitle}
+            onChange={onChangeSearchTitle}
           />
-        )}
-      </a>
+          <button onClick={() => changeButton()} className="search__button">
+            <CancelIcon width="17" height="17" fill="#CECECE" toLeftYn={true} />
+          </button>
+        </>
+      ) : (
+        <button onClick={() => changeButton()} className="search__button">
+          <SearchIcon width="19" height="19" fill="#CECECE" toLeftYn={true} />
+        </button>
+      )}
     </div>
   );
 };
