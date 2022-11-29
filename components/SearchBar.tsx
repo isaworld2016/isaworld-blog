@@ -48,9 +48,9 @@ const SearchBar = ({
       </form>
       <a onClick={() => changeButton()} className="absolute right-16 left-auto">
         {questionYn ? (
-          <CancelIcon width="18" height="18" toLeftYn={true} />
+          <CancelIcon width="18" height="18" fill="#E0E0E0" toLeftYn={true} />
         ) : (
-          <SearchIcon width="19" height="19" toLeftYn={true} />
+          <SearchIcon width="19" height="19" fill="#E0E0E0" toLeftYn={true} />
         )}
       </a>
       <a
@@ -58,9 +58,14 @@ const SearchBar = ({
         className="absolute right-8 left-auto"
       >
         {categoryYn ? (
-          <CancelIcon width="18" height="18" toLeftYn={true} />
+          <CancelIcon width="18" height="18" fill="#E0E0E0" toLeftYn={true} />
         ) : (
-          <HamburgerIcon width="18" height="18" toLeftYn={true} />
+          <HamburgerIcon
+            width="18"
+            height="18"
+            fill="#E0E0E0"
+            toLeftYn={true}
+          />
         )}
       </a>
     </div>
