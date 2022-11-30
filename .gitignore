@@ -44,3 +44,5 @@ yarn-error.log*
 # sitemap
 sitemap*.xml
 robots.txt
+
+package-lock.json
