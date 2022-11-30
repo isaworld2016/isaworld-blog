@@ -1,7 +1,6 @@
 import { allPosts, Post } from "contentlayer/generated";
 import { InferGetStaticPropsType } from "next";
 import PostList from "../components/PostList";
-import SearchBar from "../components/SearchBar";
 import Container from "../components/Container";
 import Pagination from "../components/Pagination";
 import TopBotton from "../components/TopBotton";
@@ -31,12 +30,10 @@ const Blog = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <Container>
       <div className={`flex flex-col`}>
-        <SearchBar
+        <PostList
           searchTitle={searchTitle}
           onChangeSearchTitle={onChangeSearchTitle}
           clearSearchInput={clearSearchInput}
-        />
-        <PostList
           posts={searchPosts.slice(fromPage, toPage)}
           totalCount={searchPosts.length}
         />

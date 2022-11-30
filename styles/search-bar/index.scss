@@ -1,9 +1,9 @@
-.search{
+.list-top__search{
   content:"";
-  position:absolute;
+  position:relative;
   width:32px;
   height:32px;
-  right:2rem;
+  right:0;
   left:auto;
   cursor: pointer;
   vertical-align: top;
@@ -14,7 +14,7 @@
   border: solid #eee 1px;
   border-radius:50%;
   background-color: transparent;
-  padding: 5px 15px;
+  padding: 5px 10px;
   &:hover{
     border: solid rgb(206, 206, 206) 1px;
   }
@@ -22,7 +22,7 @@
     position:absolute;
     left:auto;
     right:1rem;
-    padding: 1px 5px;
+    padding-right:15px;
     border: 0;
     background-color: transparent;
     font-size: 0.875em;
@@ -36,6 +36,7 @@
     position: absolute;
     left:auto;
     right: 5px;
+    transform:translate(0,1px);
     display: inline-block;
   }
   &.show{

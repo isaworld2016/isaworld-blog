@@ -24,7 +24,7 @@ const SearchBar = ({
   });
 
   const getSearchClass = () => {
-    const base = "search right-36";
+    const base = "list-top__search";
     if (questionYn) {
       clearSearchInput();
       return base.concat(` show`);
@@ -46,12 +46,12 @@ const SearchBar = ({
             onChange={onChangeSearchTitle}
           />
           <button onClick={() => changeButton()} className="search__button">
-            <CancelIcon width="17" height="17" fill="#CECECE" toLeftYn={true} />
+            <CancelIcon width="16" height="16" fill="#CECECE" toLeftYn={true} />
           </button>
         </>
       ) : (
         <button onClick={() => changeButton()} className="search__button">
-          <SearchIcon width="19" height="19" fill="#CECECE" toLeftYn={true} />
+          <SearchIcon width="18" height="18" fill="#CECECE" toLeftYn={true} />
         </button>
       )}
     </div>

@@ -1,18 +1,35 @@
 import BlogPost from './BlogPost';
 import { Post } from "contentlayer/generated";
+import SearchBar from "../components/SearchBar";
 
 interface PostList {
   posts: Post[];
   totalCount: number;
+  searchTitle: string;
+  onChangeSearchTitle: React.ChangeEventHandler<HTMLInputElement>;
+  clearSearchInput: () => void;
 }
 
-const PostList = ({ posts, totalCount }: PostList) => {
+const PostList = ({
+  posts,
+  totalCount,
+  searchTitle,
+  onChangeSearchTitle,
+  clearSearchInput,
+}: PostList) => {
   return (
-    <div>
-      <section className={'text-sm mt-2'}>
-        검색 결과{" "}
-        <span className="text-red-400 font-bold">{totalCount}</span>
-      </section>
+    <>
+      <div className="list-top__wrap flex flex-row justify-between items-center my-2">
+        <section className={"list-top__total text-sm font-medium text-gray-400"}>
+          Total
+          <span className="ml-0.5">({totalCount})</span>
+        </section>
+        <SearchBar
+          searchTitle={searchTitle}
+          onChangeSearchTitle={onChangeSearchTitle}
+          clearSearchInput={clearSearchInput}
+        />
+      </div>
       {posts.map((post: Post) => (
         <BlogPost
           date={post.date.slice(0, 10)}
@@ -23,7 +40,7 @@ const PostList = ({ posts, totalCount }: PostList) => {
           category={post.category}
         />
       ))}
-    </div>
+    </>
   );
 };
 export default PostList;
