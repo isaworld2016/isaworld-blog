@@ -1,28 +1,39 @@
 .list-top__search{
-  content:"";
-  position:relative;
-  width:32px;
-  height:32px;
-  right:0;
-  left:auto;
-  cursor: pointer;
-  vertical-align: top;
-  outline: none;
-  transition: width 0.4s;
-  -webkit-transition: width 0.4s;
-  box-sizing: border-box;
-  border: solid #eee 1px;
-  border-radius:50%;
-  background-color: transparent;
-  padding: 5px 10px;
-  &:hover{
-    border: solid rgb(206, 206, 206) 1px;
+  &::before{
+    content:"";
+    position:relative; /* 자식 요소인 가상 요소가 절대 위치를 가지도록 */
+    display:inline-block;
+    width:32px;
+    height:32px;
+    right:0;
+    left:auto;
+    cursor: pointer;
+    vertical-align: top;
+    outline: none;
+    transition: width 0.4s;
+    -webkit-transition: width 0.4s;
+    box-sizing: border-box;
+    border: solid #eee 1px;
+    border-radius:50%;
+    background-color: transparent;
+    padding: 5px 10px;
+    &:hover{
+      border: solid red 1px;
+    }
+  }
+  &.show{
+    &::before{
+      width:200px;
+      border-radius: 20px;
+    }
+    .search__input{
+      width:190px;
+    }
   }
   .search__input{
     position:absolute;
-    left:auto;
-    right:1rem;
     padding:1px 15px;
+    transform: translate(-202px, 5px);
     border: 0;
     background-color: transparent;
     font-size: 0.875em;
@@ -31,16 +42,11 @@
     box-sizing: border-box;
     overflow:hidden;
     float:left;
+
   }
   .search__button{
     position: absolute;
-    left:auto;
-    right: 5px;
-    transform:translate(0,1px);
+    transform:translate(-24px, 7px);
     display: inline-block;
-  }
-  &.show{
-    width:200px;
-    border-radius:20px;
   }
 }

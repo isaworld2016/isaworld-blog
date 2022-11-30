@@ -2,42 +2,17 @@
 title: CSS -> Sass && BEM
 date: 2022-11-03
 description: CSS에서 Sass와 BEM으로 갈아타자!
-category: Develop
+category: Dev
 ---
 
 ## 0. 갈아탄 이유
 아래의 이전 코드를 보자.
 
 ### before
-```css
-.container-content-pagination{
-  display: flex;
-  padding:  20px 0 60px 0;
-  position:relative;
-  width: 100%;
-  justify-content: center;
-  -webkit-box-pack: center;
-}
-.container-content-pagination > .container-content-pagination-wrapper {
-  display: flex;
-  align-items: center;
-  -webkit-box-pack: center;
-  justify-content: center;
-  height: 43px;
-  border-width: 1px;
-  border-style: solid;
-  border-color: #000;
-  border-radius: 6px;
-  padding: 0 20px 0 20px;
-}
-
+```css showLineNumbers
 .navigation.pagination {
   display: -webkit-box;
   display: flex;
-  -webkit-box-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  justify-content: center;
 }
 .navigation.pagination > .nav-links{
   margin: 2px 0 0 0;
@@ -49,64 +24,23 @@ category: Develop
   margin: 0 8px;
   font-family: "Inter",sans-serif;
   font-size: 15px;
-  font-weight: bold;
-  padding: 0 10px;
-  color: #000;
-  cursor:unset;
 }
+/* 종속 관계를 나타낼 수 없어서 기술이 길어진다.*/
 .navigation.pagination > .nav-links > .page-numbers:hover{
   text-decoration: underline;
   text-decoration-thickness: 3px;
 }
-.navigation.pagination > .nav-links > .page-numbers.cursor-unset{
-  cursor: unset;
-}
-.navigation.pagination > .nav-links > .page-numbers.cursor-unset:hover{
-  text-decoration: none;
-}
 
-.navigation.pagination > .nav-links > .page-numbers.current{
-  color:red;
-  text-decoration: none;
-  cursor:initial;
-}
-
-.pagination-previous{
-  display: flex;
-}
-.pagination-previous > a {
-  display: -webkit-box;
-  display: flex;
-  margin: 0 0 0 20px;
-  font-family: "Inter",sans-serif;
-  font-size: 15px;
-  font-weight: bold;
-  cursor:pointer;
-}
-
-.pagination-next{
-  display: flex;
-}
-.pagination-next > a {
-  display: -webkit-box;
-  display: flex;
-  margin: 0 20px 0 0;
-  font-family: "Inter",sans-serif;
-  font-size: 15px;
-  font-weight: bold;
-  cursor:pointer;
-}
-
-.pagination-icon-rotate180{
-  transform:rotate(180deg);
-}
+/**이하 생략 */
 ```
 
 나중돼서 보면 보기싫을 것 같은 코드인데, 이유는!
-종속적 포함 관계가 시각적으로 보이지 않기 때문일 것이다.
+
+종속적 포함 관계가 가시적으로 보이지 않기 때문일 것이다.
+
 게다가 클래스명에서도 중복이 많아서 가로로 길~어진 것을 볼 수 있다.
 
-Sass를 설치해보자.
+<b>Sass</b>를 설치해보자.
 
 
 ## 1. Nextjs에 Sass 뿌리기
@@ -120,18 +54,23 @@ global.css -> global.scss로 변경.
 
 ## 2. BEM 뿌리기
 이걸로는 부족하다!
-[BEM](https://velog.io/@nemo/bem)을 뿌리자.
+
+<b>[BEM](https://velog.io/@nemo/bem)</b>을 뿌리자.
 
 > BEM이란 Block, Element, Modifier의 약자
+
 - class명을 종속적으로 기술하는 게 아니라 블럭으로 구성.
+
 - 여기서 블럭은 모듈/컴포넌트처럼 '독립적으로 존재하는 덩어리' 라고 생각하면 됨.
+
 - "블럭" __ "엘리먼트" -- "유니크한 속성"
 
 
 ## 3. After
 어떻게 바뀌었을까!
 
-```css
+```css showLineNumbers
+/**mixin을 활용하면 css의 중복된 정의를 줄일 수 있다. */
 @mixin icon__a {
   display: -webkit-box;
   display: flex;
@@ -153,7 +92,7 @@ global.css -> global.scss로 변경.
   justify-content: center;
   -webkit-box-pack: center;
 
-  &__wrap{
+  &__wrap /**BEM 스타일로 클래스명을 달았더니 가독성이 좋아졌다. prefix가 달려있어서 그런가보다.*/
     display: flex;
     align-items: center;
     -webkit-box-pack: center;
@@ -168,77 +107,20 @@ global.css -> global.scss로 변경.
     .icon__previous{
       display: flex;
       a{
-        @include icon__a;
+        @include icon__a; /**mixins로 선언하고 include로 가져다가 쓸 수 있다. */
       }
       &--rotate-180{
         @include icon--rotate;
-      }
-    }
-    .icon__next{
-      display: flex;
-      a{
-        @include icon__a;
-        margin: 0 20px 0 0;
-      }
-      &--rotate-180{
-        @include icon--rotate;
-      }
-    }
-
-    .nav {
-      display: -webkit-box;
-      display: flex;
-      -webkit-box-align: center;
-      align-items: center;
-      -webkit-box-pack: center;
-      justify-content: center;
-
-      &__links{
-        margin: 2px 0 0 0;
-        display: -ms-flexbox;
-        display: flex;
-        &:hover{
-          text-decoration: none;
-        }
-
-        .nav__numbers {
-          display: inline-block;
-          margin: 0 8px;
-          font-family: "Inter",sans-serif;
-          font-size: 15px;
-          font-weight: bold;
-          padding: 0 10px;
-          color: #000;
-          cursor:pointer;
-          &:hover{
-            text-decoration: underline;
-            text-decoration-thickness: 3px;
-          }
-          &--cursor-unset:hover{
-            cursor: unset;
-            text-decoration: none;
-          }
-          &--current{
-            color:red;
-            cursor:initial;
-            text-decoration: none;
-          }
-        }
       }
     }
   }
 }
+/**이하 생략.. */
 ```
 
 ***
 
 ## 4. 느낀점
-쌩 css를 써 보려고 했으나,
-나중에 쳐다도 보기 싫은 코드가 될 것 같아서
-sass와 BEM 방법론을 뿌리고 나니 코드를 읽기가 수월해졌다.
+쌩 css를 써 보려고 했으나, 나중에 쳐다도 보기 싫은 코드가 될 것 같아서 sass와 BEM 방법론을 뿌리고 나니 코드를 읽기가 수월해졌다.
 
-종속되는 코드를 sass로 싹 모으고
-중복되는 코드들은 sass의 mixins로 모으고
-react 코드에서도 큰 덩어리들로 쪼개서 클래스명을 부여하고
-각 모듈마다 세세히 쪼개지면서 클래스명을 붙였더니
 머리속에 명쾌하게 정리되는 기분이다!
