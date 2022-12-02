@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState, useLayoutEffect } from "react";
+import { useMemo, useRef, useState, useEffect } from "react";
 import SearchIcon from "../public/assets/icons/Search";
 import CancelIcon from "../public/assets/icons/Cancel";
 
@@ -16,10 +16,9 @@ const SearchBar = ({
   const [categoryYn, setCategoryYn] = useState<boolean>(false);
 
   const changeButton = () => setQuestionYn(!questionYn);
-  const toggleCategoryIcon = () => setCategoryYn(!categoryYn);
 
   const inputRef = useRef<HTMLInputElement>(null);
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (inputRef.current !== null) inputRef.current.focus();
   });
 

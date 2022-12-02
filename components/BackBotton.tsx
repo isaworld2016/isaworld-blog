@@ -21,7 +21,7 @@ const BackBotton = () => {
   return (
     <>
       {isScroll && (
-        <button onClick={() => router.back()} className="fixed bottom-16 right-5">
+        <button onClick={() => router.replace("/blog")} className="fixed bottom-16 right-5">
           <BackIcon width="35" height="35" fill="black" />
         </button>
       )}
