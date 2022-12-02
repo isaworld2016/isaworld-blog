@@ -16,7 +16,7 @@ const BlogPost = (param: BlogPost) => {
             <span className="font-light text-xs text-gray-400">
               {param.date}
             </span>
-            <span className="font-light text-xs text-gray-400">
+            <span className="font-semibold text-xs text-[#F36727]">
               {" "}
               #{param.category}
             </span>

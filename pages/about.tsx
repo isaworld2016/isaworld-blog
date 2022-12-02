@@ -3,28 +3,29 @@ import Container from "../components/Container";
 import Image from "next/image";
 
 const About = () => {
-  const [currSelect, setCurrSelect] = useState<string>("Introduce");
+  const [currSelect, setCurrSelect] = useState<number>(1);
   const selectList = [
-    { label: "Introduce", key: 1 },
-    { label: "History", key: 2 },
+    { label: "상세설명", key: 1 },
+    { label: "후기", key: 2 },
   ];
   return (
     <Container>
-      <div className="intro__wrap">
-        <div className="intro__headline">
+      <div className="about__wrap">
+        <div className="about__headline">
           {selectList.map(({ label, key }) => (
             <button
-              className={currSelect == label ? "active" : ""}
-              onClick={() => setCurrSelect(label)}
+              className={currSelect == key ? "active" : ""}
+              onClick={() => setCurrSelect(key)}
               key={key}
             >
               <span>{label}</span>
+              <div className="about__wrap--underline"></div>
             </button>
           ))}
         </div>
-        <div className="intro__content__wrap">
-          <div className="intro__content">
-            {currSelect == "Introduce" ? (
+        <div className="about__content__wrap">
+          <div className="about__content">
+            {currSelect == 1 ? (
               <>
                 <Image
                   src={`/sleepingCat.gif`}
@@ -33,7 +34,6 @@ const About = () => {
                   height={`300`}
                   objectFit="cover"
                 />
-                이힝
               </>
             ) : (
               <>
@@ -44,7 +44,6 @@ const About = () => {
                   height={`300`}
                   objectFit="cover"
                 />
-                오홍
               </>
             )}
           </div>

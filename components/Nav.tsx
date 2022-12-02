@@ -9,7 +9,9 @@ const Nav = () => {
       {navlinks.map((nav) => (
         <Link href={nav.link} key={nav.title}>
           <a
-            className={`mr-5 ${nav.link == path ? "text-[#F7DC16] font-semibold" : ""}`}
+            className={`mr-5 ${
+              nav.link == path ? "text-[#F36727] font-semibold" : ""
+            }`}
           >
             {nav.title}
           </a>

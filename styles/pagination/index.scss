@@ -27,9 +27,9 @@
     height: 43px;
     border-width: 1px;
     border-style: solid;
-    border-color: #000;
+    border-color: #cecece;
     border-radius: 6px;
-    padding: 0 20px 0 20px;
+    padding: 0 10px 0 10px;
 
     .icon__previous{
       display: flex;
@@ -85,7 +85,7 @@
             text-decoration: none;
           }
           &--current{
-            color:red;
+            color:#F36727;
             cursor:initial;
             text-decoration: none;
           }
