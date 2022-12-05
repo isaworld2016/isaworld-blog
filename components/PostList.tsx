@@ -19,7 +19,7 @@ const PostList = ({
 }: PostList) => {
   return (
     <>
-      <div className="list-top__wrap flex flex-row justify-between items-center my-2">
+      <div className="list-top__wrap flex flex-row justify-between max-w-3xl items-center my-2">
         <section className={"list-top__total text-sm font-medium text-gray-400"}>
           Total
           <span className="ml-0.5">({totalCount})</span>
