@@ -32,7 +32,7 @@ const SearchBar = ({
 
   const searchClass = useMemo(
     () => getSearchClass(),
-    [questionYn, getSearchClass]
+    [questionYn]
   );
 
   return (
