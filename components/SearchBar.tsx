@@ -30,7 +30,10 @@ const SearchBar = ({
     } else return base;
   };
 
-  const searchClass = useMemo(() => getSearchClass(), [questionYn]);
+  const searchClass = useMemo(
+    () => getSearchClass(),
+    [questionYn, getSearchClass]
+  );
 
   return (
     <div className={searchClass}>

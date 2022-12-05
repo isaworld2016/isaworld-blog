@@ -6,17 +6,17 @@ const BackBotton = () => {
   const router = useRouter();
   const [isScroll, setIsScroll] = useState(false);
 
+  const handleScroll = () => {
+    setIsScroll(true);
+    window.removeEventListener("scroll", handleScroll);
+  };
+
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
-
-  const handleScroll = () => {
-    setIsScroll(true);
-    window.removeEventListener("scroll", handleScroll);
-  };
+  }, [handleScroll]);
 
   return (
     <>

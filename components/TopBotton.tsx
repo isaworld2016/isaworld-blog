@@ -4,17 +4,17 @@ import UpIcon from "../public/assets/icons/Up";
 const TopBotton = () => {
   const [isScroll, setIsScroll] = useState(false);
 
+  const handleScroll = () => {
+    setIsScroll(true);
+    window.removeEventListener("scroll", handleScroll);
+  };
+
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
-
-  const handleScroll = () => {
-    setIsScroll(true);
-    window.removeEventListener("scroll", handleScroll);
-  };
+  }, [handleScroll]);
 
   return (
     <>
