@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Container from "../components/layout/Container";
+import Image from "next/image";
 
 const About = () => {
   const [currSelect, setCurrSelect] = useState<number>(1);
@@ -26,12 +27,17 @@ const About = () => {
           <div className="about__content">
             {currSelect == 1 ? (
               <>
-                소개
+                <Image
+                  src={`/never.jpg`}
+                  alt="about-me"
+                  width={40}
+                  height={40}
+                  objectFit={`cover`}
+                  className={`rounded-full`}
+                />
               </>
             ) : (
-              <>
-                이력
-              </>
+              <>이력</>
             )}
           </div>
         </div>
