@@ -5,7 +5,7 @@ const About = () => {
   const [currSelect, setCurrSelect] = useState<number>(1);
   const selectList = [
     { label: "소개", key: 1 },
-    { label: "이력", key: 2 },
+    { label: "이력", key: 2 }
   ];
   return (
     <Container>
