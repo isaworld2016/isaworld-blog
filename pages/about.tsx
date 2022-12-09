@@ -28,12 +28,10 @@ const About = () => {
             {currSelect == 1 ? (
               <>
                 <Image
-                  src={`/public/assets/images/never.jpg`}
+                  src={`/never.jpg`}
                   alt="about-me"
-                  width={40}
-                  height={40}
-                  objectFit={`cover`}
-                  className={`rounded-full`}
+                  width={500}
+                  height={700}
                 />
               </>
             ) : (

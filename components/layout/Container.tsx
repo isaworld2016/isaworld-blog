@@ -25,7 +25,7 @@ const Container = (props: any) => {
         <Link href={`/`} passHref>
           <div className={`flex flex-row items-center cursor-pointer`}>
             <Image
-              src={`/public/assets/images/isa.jpeg`}
+              src={`/isa.jpeg`}
               alt="isaworld_logo"
               width={40}
               height={40}
