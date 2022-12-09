@@ -28,7 +28,7 @@ const About = () => {
             {currSelect == 1 ? (
               <>
                 <Image
-                  src={`/never.jpg`}
+                  src={`/public/assets/images/never.jpg`}
                   alt="about-me"
                   width={40}
                   height={40}
