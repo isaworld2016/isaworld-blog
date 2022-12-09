@@ -1,5 +1,5 @@
-import EndIcon from "../public/assets/icons/End";
-import NextIcon from "../public/assets/icons/Next";
+import EndIcon from "../../public/assets/icons/End";
+import NextIcon from "../../public/assets/icons/Next";
 import { PaginationProps } from "common/interface/PaginationProps";
 
 const Pagination = ({

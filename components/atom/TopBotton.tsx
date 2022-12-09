@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react';
-import BackIcon from "../public/assets/icons/Back";
-import { useRouter } from "next/router";
+import UpIcon from "public/assets/icons/Up";
 
-const BackBotton = () => {
-  const router = useRouter();
+const TopBotton = () => {
   const [isScroll, setIsScroll] = useState(false);
 
   const handleScroll = () => {
@@ -21,11 +19,11 @@ const BackBotton = () => {
   return (
     <>
       {isScroll && (
-        <button onClick={() => router.replace("/blog")} className="fixed bottom-16 right-5">
-          <BackIcon width="35" height="35" fill="black" />
-        </button>
+        <a href="#">
+          <UpIcon width="35" height="35" fill="black" />
+        </a>
       )}
     </>
   );
 }
-export default BackBotton;
+export default TopBotton;

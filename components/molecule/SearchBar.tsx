@@ -1,6 +1,6 @@
 import { useMemo, useRef, useState, useEffect } from "react";
-import SearchIcon from "../public/assets/icons/Search";
-import CancelIcon from "../public/assets/icons/Cancel";
+import SearchIcon from "../../public/assets/icons/Search";
+import CancelIcon from "../../public/assets/icons/Cancel";
 
 interface SearchBarProps {
   searchTitle: string;

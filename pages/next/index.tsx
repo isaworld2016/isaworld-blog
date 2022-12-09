@@ -1,13 +1,13 @@
-import { allPosts, Post } from "contentlayer/generated";
 import { InferGetStaticPropsType } from "next";
-import PostList from "../components/PostList";
-import Container from "../components/Container";
-import Pagination from "../components/Pagination";
-import TopBotton from "../components/TopBotton";
+import Container from "components/layout/Container";
+import Pagination from "components/atom/Pagination";
+import TopBotton from "components/atom/TopBotton";
 import usePagination from "hooks/usePagination";
+import { Next, allNexts, DocumentTypes } from ".contentlayer/generated";
+import PostList from "components/organism/PostList";
 import useSearchPost from "hooks/useSearchPost";
 
-const Blog = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
+const NextPage = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const {
     searchTitle,
     searchPosts,
@@ -25,7 +25,7 @@ const Blog = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
     currPage,
     maxPage,
     setCurrPage,
-  } = usePagination<Post>({ posts: searchPosts });
+  } = usePagination<DocumentTypes>({ posts });
 
   return (
     <Container>
@@ -37,7 +37,7 @@ const Blog = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
           posts={searchPosts.slice(fromPage, toPage)}
           totalCount={searchPosts.length}
         />
-        {searchPosts.length != 0 ? (
+        {posts.length != 0 ? (
           <Pagination
             setFromPage={setFromPage}
             setToPage={setToPage}
@@ -51,14 +51,16 @@ const Blog = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
         ) : (
           <></>
         )}
-        <TopBotton />
+        <section className="fixed bottom-5 right-5">
+          <TopBotton />
+        </section>
       </div>
     </Container>
   );
 };
 
 export const getStaticProps = async () => {
-  const posts = allPosts.sort(
+  const posts = allNexts.sort(
     (a, b) => Number(new Date(b.date)) - Number(new Date(a.date))
   );
 
@@ -69,4 +71,4 @@ export const getStaticProps = async () => {
   };
 };
 
-export default Blog;
+export default NextPage;

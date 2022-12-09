@@ -4,7 +4,7 @@ import { InferGetStaticPropsType, GetStaticProps, GetStaticPaths } from "next";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import TopBotton from "components/atom/TopBotton";
 import BackBotton from "components/atom/BackBotton";
-import { allDocuments } from ".contentlayer/generated";
+import { allOthers } from "contentlayer/generated";
 
 const Post = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const MDXComponent = useMDXComponent(post.body.code);
@@ -35,15 +35,13 @@ const Post = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    paths: allDocuments.map((p) => ({
-      params: { slug: p.slug },
-    })),
+    paths: allOthers.map((p) => ({ params: { slug: p.slug } })),
     fallback: false,
   };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const post = allDocuments.find((p) => p.slug === params?.slug);
+  const post = allOthers.find((p) => p.slug === params?.slug);
   return {
     props: {
       post,

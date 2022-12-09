@@ -1,4 +1,4 @@
-import { allPosts, Post } from "contentlayer/generated";
+import { allDocuments } from "contentlayer/generated";
 import { InferGetStaticPropsType } from "next";
 import Link from "next/link";
 
@@ -9,14 +9,14 @@ const RecentPosts = ({
     <section className={`mt-8`}>
       <h1 className={`text-3xl font-extrabold`}>최근 게시물</h1>
       <div className={`flex flex-col`}>
-        {posts.slice(0, 3).map((post: Post, key: number) => (
+        {posts.slice(0, 3).map((post: any, key: number) => (
           <div
             key={key}
             className="w-full my-2 ml-1 transition ease-in-out hover:-translate-x-1.5"
           >
             <Link
               key={post._id}
-              href={`/blog/${post._raw.flattenedPath}`}
+              href={`${post.category}/${post.slug}`}
               passHref
             >
               <a>
@@ -38,7 +38,7 @@ const RecentPosts = ({
 };
 
 export const getStaticProps = async () => {
-  const posts = allPosts.sort(
+  const posts = allDocuments.sort(
     (a, b) => Number(new Date(b.date)) - Number(new Date(a.date))
   );
 

@@ -1,9 +1,8 @@
-import Container from "../components/Container";
+import Container from "../components/layout/Container";
 import Image from "next/image";
-import RecentPosts from "../components/RecentPosts";
-import metadata from "../data/metadata";
-import { allPosts } from "contentlayer/generated";
+import RecentPosts from "../components/organism/RecentPosts";
 import { InferGetStaticPropsType } from "next";
+import { allDocuments } from "contentlayer/generated";
 
 const Home = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
@@ -32,7 +31,7 @@ const Home = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
 };
 
 export const getStaticProps = async () => {
-  const posts = allPosts.sort(
+  const posts = allDocuments.sort(
     (a, b) => Number(new Date(b.date)) - Number(new Date(a.date))
   );
 
@@ -41,5 +40,5 @@ export const getStaticProps = async () => {
       posts,
     },
   };
-}
+};
 export default Home;

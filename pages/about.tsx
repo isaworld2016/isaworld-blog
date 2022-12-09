@@ -1,12 +1,11 @@
 import { useState } from "react";
-import Container from "../components/Container";
-import Image from "next/image";
+import Container from "../components/layout/Container";
 
 const About = () => {
   const [currSelect, setCurrSelect] = useState<number>(1);
   const selectList = [
-    { label: "상세설명", key: 1 },
-    { label: "후기", key: 2 },
+    { label: "소개", key: 1 },
+    { label: "이력", key: 2 },
   ];
   return (
     <Container>
@@ -27,23 +26,11 @@ const About = () => {
           <div className="about__content">
             {currSelect == 1 ? (
               <>
-                <Image
-                  src={`/sleepingCat.gif`}
-                  alt="졸리냥"
-                  width={`120`}
-                  height={`300`}
-                  objectFit="cover"
-                />
+                소개
               </>
             ) : (
               <>
-                <Image
-                  src={`/prettyCat.gif`}
-                  alt="이쁘냥"
-                  width={`120`}
-                  height={`300`}
-                  objectFit="cover"
-                />
+                이력
               </>
             )}
           </div>

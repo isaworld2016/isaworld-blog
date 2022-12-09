@@ -1,7 +1,7 @@
-import { Post } from "contentlayer/generated";
+import { DocumentTypes } from "contentlayer/generated";
 
 interface BlogContent {
-  post: Post;
+  post: DocumentTypes;
   MDXComponent: React.ComponentType<any>;
 }
 const BlogContent = ({ post, MDXComponent }: BlogContent) => {
