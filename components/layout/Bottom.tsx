@@ -4,15 +4,8 @@ const Bottom = () => {
   return (
     <div
       className="mt-5 mb-1"
-      onClick={() => window.open("https://github.com/isaworld2016", "_blank")}
     >
-      <Image
-        src={`/github.png`}
-        alt="@isaworld2016"
-        width={35}
-        height={35}
-        className={`rounded-3xl cursor-pointer`}
-      />
+      ©2022 isaworld - All Right Reserved
     </div>
   );
 };

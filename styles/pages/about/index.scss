@@ -21,7 +21,7 @@
       width: 100%;
       white-space: nowrap;
       &.active{
-        color: #fd9c6e;
+        color: #282c37;
         font-weight: bold;
         ::before{
           display: block;
@@ -32,12 +32,12 @@
           width: 0;
           height: 0;
           transform: translateX(-50%);
-          border-color: transparent transparent #fd9c6e;
+          border-color: transparent transparent #282c37;
           border-style: solid;
           border-width: 0 7px 7px;
         }
         .about__wrap--underline{
-          background: #fd9c6e;
+          background: #282c37;
           height:3px;
           transform:translateY(13px)
         }
@@ -46,24 +46,6 @@
           border-color: transparent transparent #282c37;
         }
       }
-    }
-  }
-  .about__content__wrap{
-      height: calc(100% - 100px);
-      display: flex;
-      flex-direction: column;
-    .about__content{
-      color: #606984;
-      background: #fff;
-      text-align: center;
-      padding: 20px;
-      font-size: 15px;
-      font-weight: 400;
-      cursor: default;
-      display: flex;
-      flex: 1 1 auto;
-      align-items: center;
-      justify-content: center;
     }
   }
 }

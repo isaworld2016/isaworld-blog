@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Container from "../components/layout/Container";
-import Image from "next/image";
+import Intro from "components/organism/Intro";
+import History from "components/organism/History";
 
 const About = () => {
   const [currSelect, setCurrSelect] = useState<number>(1);
@@ -23,21 +24,16 @@ const About = () => {
             </button>
           ))}
         </div>
-        <div className="about__content__wrap">
-          <div className="about__content">
-            {currSelect == 1 ? (
-              <>
-                <Image
-                  src={`/never.jpg`}
-                  alt="about-me"
-                  width={500}
-                  height={700}
-                />
-              </>
-            ) : (
-              <>이력</>
-            )}
-          </div>
+        <div className="flex flex-col items-center justify-center xl:flex-row">
+          {currSelect == 1 ? (
+            <div className="mx-5 flex justify-center pt-5 md:mx-14 leading-loose">
+              <Intro />
+            </div>
+          ) : (
+            <div className="mt-10 flex h-[55vh] justify-center overflow-y-auto px-5 md:px-14 xl:h-[75vh]">
+              <History />
+            </div>
+          )}
         </div>
       </div>
     </Container>
