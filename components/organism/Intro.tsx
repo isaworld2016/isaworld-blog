@@ -17,10 +17,8 @@ const Intro = () => {
         />
       </section>
       <section className="text-left">
-        {introTextList.map(a => (
-          <p className="mb-6">
-            {a}
-          </p>
+        {introTextList.map((a, key) => (
+          <p className="mb-6" key={key}>{a}</p>
         ))}
         <div
           className="mt-5 mb-1"

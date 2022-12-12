@@ -88,8 +88,8 @@ const projectList: ProjectList[] = [
 const History = () => {
   return (
     <div className="w-full text-left">
-      {projectList.map(({ title, period, first, second, third }) => (
-        <section className="first:mt-0 mt-20 shadow-lg px-10 py-6 leading-relaxed">
+      {projectList.map(({ title, period, first, second, third }, key) => (
+        <section className="first:mt-0 mt-20 shadow-lg px-10 py-6 leading-relaxed" key={key}>
           <section className="mb-5">
             <strong className="mt-10 w-full">[{title}]</strong>
             <p className="text-neutral-400 text-sm">{period}</p>
