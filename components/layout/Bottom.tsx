@@ -24,6 +24,7 @@ const Bottom = () => {
                 <a
                   href="https://mail.google.com/mail/?view=cm&fs=1&to=isaworld2016@gmail.com"
                   target="_blank"
+                  rel="noreferrer"
                 >
                   <Image
                     src={`/images/mail.png`}
