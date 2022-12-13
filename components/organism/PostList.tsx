@@ -20,7 +20,7 @@ const PostList = ({
 }: Props) => {
   return (
     <>
-      <div className="list-top flex flex-row justify-between max-w-3xl items-center my-2">
+      <div className={`list-top flex flex-row justify-between max-w-3xl items-center my-2`}>
         <Category totalCount={totalCount} />
         <SearchBar
           searchTitle={searchTitle ? searchTitle : ""}
@@ -33,7 +33,7 @@ const PostList = ({
       {posts.map((post) => (
         <div
           key={post._id}
-          className="w-full my-4 transition ease-in-out hover:-translate-x-1.5 border-b-2 border-[#efefef] border-dashed"
+          className={`w-full my-4 transition ease-in-out hover:-translate-x-1.5 border-b-2 border-[#efefef] border-dashed`}
         >
           <Link href={`${post.category}/${post.slug}`} passHref>
             <a>
@@ -44,12 +44,11 @@ const PostList = ({
                 {post.description}
               </div>
               <div className={`mt-4 mb-5`}>
-                <span className="font-light text-xs text-gray-400">
+                <span className={`font-light text-xs text-gray-400`}>
                   {post.date}
                 </span>
-                <span className="font-semibold text-xs text-[#F36727]">
-                  {" "}
-                  #{post.category}
+                <span className={`font-semibold text-xs text-[#F36727]`}>
+                  &nbsp;#{post.category}
                 </span>
               </div>
             </a>

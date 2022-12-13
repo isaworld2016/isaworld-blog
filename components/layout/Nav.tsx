@@ -10,7 +10,7 @@ const Nav = () => {
         <Link href={nav.link} key={nav.title}>
           <a
             className={`mr-5 ${
-              nav.link == currPath ? "text-[#F36727] font-semibold" : ""
+              nav.link == currPath ? `text-[#F36727] font-semibold` : ``
             }`}
           >
             {nav.title}

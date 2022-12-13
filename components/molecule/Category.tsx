@@ -15,8 +15,8 @@ const Category = ({ totalCount }: props) => {
       <div
         className={`${
           on
-            ? "absolute top-24 left-26 bg-white z-10 drop-shadow-md py-3 px-0"
-            : "hidden"
+            ? `absolute top-24 left-26 bg-white z-10 drop-shadow-md py-3 px-0`
+            : `hidden`
         } pl-5 rounded-lg`}
       >
         {blogList.map((blog) => (
@@ -28,7 +28,7 @@ const Category = ({ totalCount }: props) => {
                   blog.link === currPath ? "text-[#F36727]" : ""
                 }`}
               >
-                <span className="mr-4">{blog.title}</span>
+                <span className={`mr-4`}>{blog.title}</span>
                 <span>({blog?.length})</span>
               </a>
             </div>
@@ -36,11 +36,11 @@ const Category = ({ totalCount }: props) => {
         ))}
       </div>
       <button
-        className={"list-top__total text-sm font-medium text-gray-400"}
+        className={`list-top__total text-sm font-medium text-gray-400`}
         onClick={() => setOn(!on)}
       >
         {blogList.find((a) => a.link == currPath)?.title}
-        <span className="">
+        <span>
           ({blogList.find((a) => a.link == currPath)?.length})
         </span>
       </button>

@@ -38,9 +38,9 @@ const Pagination = ({
   };
 
   return (
-    <div className="pagination">
-      <div className="pagination__wrap">
-        <div className="icon__previous">
+    <div className={`pagination`}>
+      <div className={`pagination__wrap`}>
+        <div className={`icon__previous`}>
           {currPage != 1 ? (
             <>
               <a onClick={(e) => callPage(e, 1)}>
@@ -52,8 +52,8 @@ const Pagination = ({
             </>
           ) : null}
         </div>
-        <nav className="nav">
-          <div className="nav__links">
+        <nav className={`nav`}>
+          <div className={`nav__links`}>
             {showPages().map((a, i) => (
               <div
                 key={a + i}
@@ -69,7 +69,7 @@ const Pagination = ({
             ))}
           </div>
         </nav>
-        <div className="icon__next">
+        <div className={`icon__next`}>
           {currPage != maxPage ? (
             <>
               <a onClick={(e) => callPage(e, currPage + 1)}>

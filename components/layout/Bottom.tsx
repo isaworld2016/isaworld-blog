@@ -2,18 +2,18 @@ import Image from "next/image";
 
 const Bottom = () => {
   return (
-    <div className="footer">
-      <div className="footer__container">
-        <div className="footer-left">
-          <div className="footer-left__lists">
-            <ul className="footer-left__list">
+    <div className={`footer`}>
+      <div className={`footer__container`}>
+        <div className={`footer-left`}>
+          <div className={`footer-left__lists`}>
+            <ul className={`footer-left__list`}>
               <li
                 onClick={() =>
                   window.open("https://github.com/isaworld2016", "_blank")
                 }
               >
                 <Image
-                  src={`/github.png`}
+                  src={`/images/github.png`}
                   alt="@isaworld2016"
                   width={30}
                   height={30}
@@ -38,12 +38,14 @@ const Bottom = () => {
             </ul>
           </div>
         </div>
-        <div className="footer-right">
+        <div className={`footer-right`}>
           <p>한 걸음, 한 걸음</p>
           <p>그냥 말고 신명나게</p>
         </div>
       </div>
-      <div className="copy-right">©2022 isaworld - All Right Reserved</div>
+      <div className={`copy-right`}>
+        ©2022 isaworld - All Right Reserved
+      </div>
     </div>
   );
 };

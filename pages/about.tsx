@@ -11,8 +11,8 @@ const About = () => {
   ];
   return (
     <Container>
-      <div className="about__wrap">
-        <div className="about__headline">
+      <div className={`about__wrap`}>
+        <div className={`about__headline`}>
           {selectList.map(({ label, key }) => (
             <button
               className={currSelect == key ? "active" : ""}
@@ -23,13 +23,13 @@ const About = () => {
             </button>
           ))}
         </div>
-        <div className="flex flex-col items-center justify-center xl:flex-row">
+        <div className={`flex flex-col items-center justify-center xl:flex-row`}>
           {currSelect == 1 ? (
-            <div className="mx-5 flex justify-center pt-8 leading-loose">
+            <div className={`mx-5 flex justify-center pt-8 leading-loose`}>
               <Intro />
             </div>
           ) : (
-            <div className="mt-10 flex h-[55vh] justify-center overflow-y-auto px-5 md:px-14 xl:h-[75vh]">
+            <div className={`mt-10 flex h-[55vh] justify-center overflow-y-auto px-5 md:px-14 xl:h-[75vh]`}>
               <History />
             </div>
           )}

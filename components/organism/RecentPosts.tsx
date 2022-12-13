@@ -12,7 +12,7 @@ const RecentPosts = ({
         {posts.slice(0, 3).map((post: any, key: number) => (
           <div
             key={key}
-            className="w-full my-2 ml-1 transition ease-in-out hover:-translate-x-1.5"
+            className={`w-full my-2 ml-1 transition ease-in-out hover:-translate-x-1.5`}
           >
             <Link
               key={post._id}
@@ -20,7 +20,7 @@ const RecentPosts = ({
               passHref
             >
               <a>
-                <div className="mt-3 flex justify-between">
+                <div className={`mt-3 flex justify-between`}>
                   <div className={`font-medium text-xl text-gray-800`}>
                     {post.title}
                   </div>

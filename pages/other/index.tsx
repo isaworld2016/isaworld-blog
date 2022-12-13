@@ -51,7 +51,7 @@ const OtherPage = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) =>
         ) : (
           <></>
         )}
-        <section className="fixed bottom-5 right-5">
+        <section className={`fixed bottom-5 right-5`}>
           <TopBotton />
         </section>
       </div>

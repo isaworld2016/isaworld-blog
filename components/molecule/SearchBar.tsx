@@ -22,7 +22,7 @@ const SearchBar = ({
   });
 
   const getSearchClass = () => {
-    const base = "search-bar";
+    const base = `search-bar`;
     if (questionYn) {
       clearSearchInput();
       return base.concat(` show`);
@@ -41,17 +41,17 @@ const SearchBar = ({
         <input
           ref={inputRef}
           autoComplete="off"
-          className="search-bar__input"
+          className={`search-bar__input`}
           placeholder="검색어를 입력하세요 😎"
           value={searchTitle}
           onChange={onChangeSearchTitle}
         />
-        <button onClick={() => changeButton()} className="search-bar__button">
+        <button onClick={() => changeButton()} className={`search-bar__button`}>
           <CancelIcon width="16" height="16" fill="#CECECE" toLeftYn={true} />
         </button>
       </>
     ) : (
-    <button onClick={() => changeButton()} className="search-bar__button">
+    <button onClick={() => changeButton()} className={`search-bar__button`}>
       <SearchIcon width="18" height="18" fill="#CECECE" toLeftYn={true} />
     </button>)}
   </div>
