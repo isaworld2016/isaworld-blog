@@ -3,11 +3,6 @@ import NextIcon from "public/assets/icons/Next";
 import { PaginationProps } from "common/interface/PaginationProps";
 
 const Pagination = ({
-  setFromPage,
-  setToPage,
-  calPage,
-  toPage,
-  fromPage,
   currPage,
   maxPage,
   setCurrPage,
