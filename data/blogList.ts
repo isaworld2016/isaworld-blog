@@ -1,5 +1,5 @@
 import { allOthers, allNexts, allDocuments } from "contentlayer/generated";
-import { NavLinks } from "../common/interface/NavLinks";
+import { NavLinks } from "common/interface/NavLinks";
 
 const blogList: NavLinks[] = [
   { title: "전체", link: "/blog", length: allDocuments.length, searchType: "ALL" },

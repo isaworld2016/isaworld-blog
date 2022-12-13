@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Container from "../components/layout/Container";
+import Container from "components/layout/Container";
 import Intro from "components/organism/Intro";
 import History from "components/organism/History";
 
@@ -19,14 +19,13 @@ const About = () => {
               onClick={() => setCurrSelect(key)}
               key={key}
             >
-              <span>{label}</span>
-              <div className="about__wrap--underline"></div>
+              <p>{label}</p>
             </button>
           ))}
         </div>
         <div className="flex flex-col items-center justify-center xl:flex-row">
           {currSelect == 1 ? (
-            <div className="mx-5 flex justify-center pt-5 md:mx-14 leading-loose">
+            <div className="mx-5 flex justify-center pt-8 leading-loose">
               <Intro />
             </div>
           ) : (

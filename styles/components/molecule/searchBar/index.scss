@@ -1,4 +1,4 @@
-.list-top__search{
+.search-bar{
   &::before{
     content:"";
     position:relative; /* 자식 요소인 가상 요소가 절대 위치를 가지도록 */
@@ -6,7 +6,6 @@
     width:32px;
     height:32px;
     right:0;
-    left:auto;
     cursor: pointer;
     vertical-align: top;
     outline: none;
@@ -17,17 +16,12 @@
     border-radius:50%;
     background-color: transparent;
     padding: 5px 10px;
-    &:hover{
-      border: solid red 1px;
-    }
   }
-  &.show{
-    &::before{
-      width:200px;
-      border-radius: 20px;
-    }
+  &.show::before{
+    width:200px;
+    border-radius: 20px;
   }
-  .search__input{
+  &__input{
     position:absolute;
     transform: translate(-200px, 5.5px);
     padding:0 15px;
@@ -41,7 +35,7 @@
     float:left;
 
   }
-  .search__button{
+  &__button{
     position: absolute;
     transform:translate(-24px, 7px);
     display: inline-block;

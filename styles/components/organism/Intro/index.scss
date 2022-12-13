@@ -1,0 +1,18 @@
+.intro{
+  &__image{
+    width: 15vw;
+    min-width:250px;
+    height: 15vh;
+    min-height:250px;
+  }
+  &__text{
+    text-align: left;
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width:640px) {
+  .intro{
+    flex-direction: column;
+  }
+}

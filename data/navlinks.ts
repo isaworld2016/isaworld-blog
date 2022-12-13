@@ -1,4 +1,4 @@
-import { NavLinks } from "../common/interface/NavLinks";
+import { NavLinks } from "common/interface/NavLinks";
 
 const navlinks: NavLinks[] = [
   { title: "Home", link: "/" },

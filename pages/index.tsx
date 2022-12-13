@@ -1,6 +1,6 @@
-import Container from "../components/layout/Container";
+import Container from "components/layout/Container";
 import Image from "next/image";
-import RecentPosts from "../components/organism/RecentPosts";
+import RecentPosts from "components/organism/RecentPosts";
 import { InferGetStaticPropsType } from "next";
 import { allDocuments } from "contentlayer/generated";
 
@@ -10,7 +10,7 @@ const Home = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
       <div className={`my-5 w-full`}>
         <div className={`relative`}>
           <Image
-            src={`/images/어른3.png`}
+            src={`/images/어른.png`}
             alt="피할수없다면"
             width={`80%`}
             height={35}

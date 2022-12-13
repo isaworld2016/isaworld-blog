@@ -15,7 +15,7 @@ const Category = ({ totalCount }: props) => {
       <div
         className={`${
           on
-            ? "absolute top-24 left-26 bg-white z-10 dark:bg-neutral-600 drop-shadow-md py-3 px-0"
+            ? "absolute top-24 left-26 bg-white z-10 drop-shadow-md py-3 px-0"
             : "hidden"
         } pl-5 rounded-lg`}
       >

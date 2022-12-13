@@ -1,5 +1,5 @@
-import SearchBar from "../molecule/SearchBar";
-import Category from "../molecule/Category";
+import SearchBar from "components/molecule/SearchBar";
+import Category from "components/molecule/Category";
 import Link from "next/link";
 import { DocumentTypes } from "contentlayer/generated";
 
@@ -20,18 +20,20 @@ const PostList = ({
 }: Props) => {
   return (
     <>
-      <div className="list-top__wrap flex flex-row justify-between max-w-3xl items-center my-2">
+      <div className="list-top flex flex-row justify-between max-w-3xl items-center my-2">
         <Category totalCount={totalCount} />
         <SearchBar
-          searchTitle={searchTitle?searchTitle:""}
-          onChangeSearchTitle={onChangeSearchTitle?onChangeSearchTitle:()=>{}}
-          clearSearchInput={clearSearchInput?clearSearchInput:()=>{}}
+          searchTitle={searchTitle ? searchTitle : ""}
+          onChangeSearchTitle={
+            onChangeSearchTitle ? onChangeSearchTitle : () => {}
+          }
+          clearSearchInput={clearSearchInput ? clearSearchInput : () => {}}
         />
       </div>
       {posts.map((post) => (
         <div
           key={post._id}
-          className="w-full my-4 transition ease-in-out hover:-translate-x-1.5 border-b-2 border-gray-200"
+          className="w-full my-4 transition ease-in-out hover:-translate-x-1.5 border-b-2 border-[#efefef] border-dashed"
         >
           <Link href={`${post.category}/${post.slug}`} passHref>
             <a>

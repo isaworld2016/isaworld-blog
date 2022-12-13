@@ -36,8 +36,10 @@ const Container = (props: any) => {
         </Link>
         <Nav />
       </header>
-      <main className={`w-full max-w-3xl`}>{props.children}</main>
-      <Bottom />
+      <main className={`w-full max-w-3xl`}>
+        {props.children}
+      </main>
+      <Bottom/>
     </div>
   );
 };

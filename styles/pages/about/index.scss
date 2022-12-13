@@ -21,9 +21,21 @@
       width: 100%;
       white-space: nowrap;
       &.active{
-        color: #282c37;
-        font-weight: bold;
-        ::before{
+        p{
+          color: #282c37;
+          font-weight: bold;
+        }
+        &::before{
+          display: block;
+          position: absolute;
+          content: "";
+          width:10em;
+          bottom: 0;
+          left:50%;
+          transform: translateX(-50%);
+          border-bottom: 2px solid #282c37;
+        }
+        &::after{
           display: block;
           content: "";
           position: absolute;
@@ -34,16 +46,7 @@
           transform: translateX(-50%);
           border-color: transparent transparent #282c37;
           border-style: solid;
-          border-width: 0 7px 7px;
-        }
-        .about__wrap--underline{
-          background: #282c37;
-          height:3px;
-          transform:translateY(13px)
-        }
-        ::after{
-          bottom: -1px;
-          border-color: transparent transparent #282c37;
+          border-width: 0 6px 6px;
         }
       }
     }

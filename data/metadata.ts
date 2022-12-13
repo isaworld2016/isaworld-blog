@@ -1,4 +1,4 @@
-import { Metadata } from "../common/interface/Metadata";
+import { Metadata } from "common/interface/Metadata";
 
 const metadata: Metadata = {
   title: "Isaworld Blog",
