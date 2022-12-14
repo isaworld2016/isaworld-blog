@@ -3,7 +3,7 @@ import { projectList } from "common/constant/projectList";
 const History = () => {
   return (
     <div className={`w-full`}>
-      {projectList.map(({ title, period, first, second, third }, key) => (
+      {projectList.map(({ title, period, environment, mainJob }, key) => (
         <div
           className={`first:mt-0 mt-20 shadow-lg px-6 py-8 leading-relaxed bg-gray-50 md:flex`}
           key={key}
@@ -15,7 +15,7 @@ const History = () => {
           <section className="lg:w-3/4">
             <div className={`border-l-2 mb-5 text-left`}>
               <div className="ml-3">
-                {first.map((f, i) => (
+                {environment.map((f, i) => (
                   <>
                     <div
                       key={i}
@@ -29,7 +29,7 @@ const History = () => {
             </div>
             <div className={`mb-5 text-left`}>
               <div className="ml-3">
-                {third.map((t, i) => (
+                {mainJob.map((t, i) => (
                   <>
                     <div key={i} className={`text-sm leading-relaxed`}>
                       &nbsp;{`· ${t}`}
