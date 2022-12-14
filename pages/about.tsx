@@ -29,7 +29,7 @@ const About = () => {
               <Intro />
             </div>
           ) : (
-            <div className={`mt-10 flex h-[55vh] justify-center overflow-y-auto px-5 md:px-14 xl:h-[75vh]`}>
+            <div className={`mt-10 flex h-[70vh] justify-center overflow-y-auto px-5 md:px-14 xl:h-[75vh]`}>
               <History />
             </div>
           )}

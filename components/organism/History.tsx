@@ -2,41 +2,44 @@ import { projectList } from "common/constant/projectList";
 
 const History = () => {
   return (
-    <div className={`w-full text-left`}>
+    <div className={`w-full`}>
       {projectList.map(({ title, period, first, second, third }, key) => (
-        <section
-          className={`first:mt-0 mt-20 shadow-lg px-10 py-6 leading-relaxed`}
+        <div
+          className={`first:mt-0 mt-20 shadow-lg px-6 py-8 leading-relaxed bg-gray-50 md:flex`}
           key={key}
         >
-          <section className={`mb-5`}>
-            <strong className={`mt-10 w-full`}>[{title}]</strong>
+          <section className={`pr-5 mb-5 lg:w-1/4`}>
+            <strong className={`mt-10`}>{title}</strong>
             <p className={`text-neutral-400 text-sm`}>{period}</p>
           </section>
-          <section className={`mb-3`}>
-            <p>1. 환경</p>
-            {first.map((f, i) => (
-              <>
-                <div key={i}>&nbsp;{`- ${f}`}</div>
-              </>
-            ))}
+          <section className="lg:w-3/4">
+            <div className={`border-l-2 mb-5 text-left`}>
+              <div className="ml-3">
+                {first.map((f, i) => (
+                  <>
+                    <div
+                      key={i}
+                      className={`text-gray-400 text-sm leading-relaxed`}
+                    >
+                      &nbsp;{`- ${f}`}
+                    </div>
+                  </>
+                ))}
+              </div>
+            </div>
+            <div className={`mb-5 text-left`}>
+              <div className="ml-3">
+                {third.map((t, i) => (
+                  <>
+                    <div key={i} className={`text-sm leading-relaxed`}>
+                      &nbsp;{`· ${t}`}
+                    </div>
+                  </>
+                ))}
+              </div>
+            </div>
           </section>
-          <section className={`mb-3`}>
-            <p>2. 결과물</p>
-            {second.map((s, i) => (
-              <>
-                <div key={i}>&nbsp;{`: ${s}`}</div>
-              </>
-            ))}
-          </section>
-          <section className={`mb-3`}>
-            <p>3. 수행 업무</p>
-            {third.map((t, i) => (
-              <>
-                <div key={i}>&nbsp;{`- ${t}`}</div>
-              </>
-            ))}
-          </section>
-        </section>
+        </div>
       ))}
     </div>
   );

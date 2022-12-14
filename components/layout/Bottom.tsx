@@ -39,8 +39,8 @@ const Bottom = () => {
           </div>
         </div>
         <div className={`footer-right`}>
-          <p>한 걸음, 한 걸음</p>
-          <p>그냥 말고 신명나게</p>
+          <p>태산이 높다 하되</p>
+          <p>하늘 아래 뫼이로다</p>
         </div>
       </div>
       <div className={`copy-right`}>
