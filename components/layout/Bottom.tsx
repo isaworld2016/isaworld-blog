@@ -15,9 +15,9 @@ const Bottom = () => {
                 <Image
                   src={`/images/github.png`}
                   alt="@isaworld2016"
-                  width={30}
-                  height={30}
-                  className={`rounded-3xl cursor-pointer`}
+                  width={28}
+                  height={28}
+                  className={`cursor-pointer`}
                 />
               </li>
               <li>
@@ -29,9 +29,9 @@ const Bottom = () => {
                   <Image
                     src={`/images/mail.png`}
                     alt="isaworld2016@gmail.com"
-                    width={30}
-                    height={30}
-                    className={`rounded-3xl cursor-pointer`}
+                    width={23}
+                    height={23}
+                    className={`cursor-pointer`}
                   />
                 </a>
               </li>
@@ -39,8 +39,8 @@ const Bottom = () => {
           </div>
         </div>
         <div className={`footer-right`}>
-          <p>태산이 높다 하되</p>
-          <p>하늘 아래 뫼이로다</p>
+          <p>버그가 많다 하되</p>
+          <p>Stack OverFlow 아래 뫼이로다</p>
         </div>
       </div>
       <div className={`copy-right`}>

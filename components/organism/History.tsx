@@ -5,7 +5,7 @@ const History = () => {
     <div className={`w-full`}>
       {projectList.map(({ title, period, environment, mainJob }, key) => (
         <div
-          className={`first:mt-0 mt-20 shadow-lg px-6 py-8 leading-relaxed bg-gray-50 md:flex`}
+          className={`first:mt-0 mt-20 shadow-md px-6 py-8 leading-relaxed bg-gray-50 md:flex`}
           key={key}
         >
           <section className={`pr-5 mb-5 lg:w-1/4`}>
