@@ -1,11 +1,19 @@
 .search-bar{
+  position: inherit;
+  display: inline-flex;
+  // float: left;
+  // overflow: hidden;
+  width: 32px;
+  background-color: #fff;
+  // box-sizing: border-box;
+  transition: width 0.5s;
+  -webkit-transition: width 0.5s;
   &::before{
     content:"";
-    position:inherit; /* 자식 요소인 가상 요소가 절대 위치를 가지도록 */
+    position:absolute;
     display:inline-block;
     width:32px;
     height:32px;
-    right:0;
     cursor: pointer;
     vertical-align: top;
     outline: none;
@@ -15,29 +23,23 @@
     border: solid #eee 1px;
     border-radius:50%;
     background-color: transparent;
-    // padding: 5px 10px;
   }
   &.show::before{
-    width:200px;
-    border-radius: 20px;
+    display: none;
   }
-  &__input{
-    position:absolute;
-    transform: translate(-200px, 5.5px);
-    padding:0 15px;
-    border: 0;
-    background-color: transparent;
-    font-size: 0.875em;
-    line-height: 1;
-    outline: none;
-    box-sizing: border-box;
-    overflow:hidden;
-    float:left;
-
+  &.show{
+    width:240px;
+  }
+  &.show .search-bar__input{
+    padding: 5px 15px;
+    display: block;
+    width: 100%;
+    border: 1px solid #eee;
+    border-radius: 32px;
   }
   &__button{
-    position: absolute;
-    transform:translate(-24px, 7px);
-    display: inline-block;
+    height: 32px;
+    width:32px;
+    transform:translate(8px, 0px);
   }
 }
