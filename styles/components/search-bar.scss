@@ -28,11 +28,14 @@
     width:240px;
   }
   &.show .search-bar__input{
-    padding: 5px 15px;
+    padding: 3px 15px;
     display: block;
     width: 100%;
     border: 1px solid #eee;
     border-radius: 32px;
+    &:focus{
+      outline: none;
+    }
   }
   &__button{
     height: 32px;
