@@ -1,13 +1,12 @@
 .search-bar{
   position: inherit;
   display: inline-flex;
-  // float: left;
-  // overflow: hidden;
+  overflow: hidden;
   width: 32px;
   background-color: #fff;
-  // box-sizing: border-box;
-  transition: width 0.5s;
-  -webkit-transition: width 0.5s;
+  box-sizing: border-box;
+  transition: width 0.4s;
+  -webkit-transition: width 0.4s;
   &::before{
     content:"";
     position:absolute;
@@ -17,8 +16,6 @@
     cursor: pointer;
     vertical-align: top;
     outline: none;
-    transition: width 0.4s;
-    -webkit-transition: width 0.4s;
     box-sizing: border-box;
     border: solid #eee 1px;
     border-radius:50%;
