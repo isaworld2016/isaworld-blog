@@ -17,7 +17,7 @@ const Container = (props: any) => {
       <Head>
         <title>{metadata.title}</title>
         <meta content={meta.description} name="description" />
-        <meta property="og:site_name" content={meta.author} />
+        <meta property="og:site_name" content={meta.title} />
       </Head>
       <header
         className={`w-full max-w-3xl flex flex-row justify-between items-center my-1`}
