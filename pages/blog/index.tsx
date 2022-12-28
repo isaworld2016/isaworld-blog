@@ -5,6 +5,7 @@ import Pagination from "components/atom/Pagination";
 import TopBotton from "components/atom/TopBotton";
 import usePagination from "hooks/usePagination";
 import useSearchPost from "hooks/useSearchPost";
+import { NextSeo } from "next-seo";
 import {
   DocumentTypes,
   allDocuments,
@@ -15,7 +16,6 @@ const BlogPage = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => 
     searchTitle,
     searchPosts,
     onChangeSearchTitle,
-    getSearchPost,
     clearSearchInput,
   } = useSearchPost(posts);
 
@@ -31,34 +31,44 @@ const BlogPage = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => 
   } = usePagination<DocumentTypes>({ posts });
 
   return (
-    <Container>
-      <div className={`flex flex-col`}>
-        <PostList
-          searchTitle={searchTitle}
-          onChangeSearchTitle={onChangeSearchTitle}
-          clearSearchInput={clearSearchInput}
-          posts={searchPosts.slice(fromPage, toPage)}
-          totalCount={searchPosts.length}
-        />
-        {posts.length != 0 ? (
-          <Pagination
-            setFromPage={setFromPage}
-            setToPage={setToPage}
-            calPage={calPage}
-            toPage={toPage}
-            fromPage={fromPage}
-            currPage={currPage}
-            maxPage={maxPage}
-            setCurrPage={setCurrPage}
+    <>
+      <NextSeo
+        title="blog"
+        description="Isa의 기록들"
+        canonical="https://isaworld-blog.vercel.app/blog"
+        openGraph={{
+          url: "https://isaworld-blog.vercel.app/blog",
+        }}
+      />
+      <Container>
+        <div className={`flex flex-col`}>
+          <PostList
+            searchTitle={searchTitle}
+            onChangeSearchTitle={onChangeSearchTitle}
+            clearSearchInput={clearSearchInput}
+            posts={searchPosts.slice(fromPage, toPage)}
+            totalCount={searchPosts.length}
           />
-        ) : (
-          <></>
-        )}
-        <section className={`fixed bottom-5 right-5`}>
-          <TopBotton />
-        </section>
-      </div>
-    </Container>
+          {posts.length != 0 ? (
+            <Pagination
+              setFromPage={setFromPage}
+              setToPage={setToPage}
+              calPage={calPage}
+              toPage={toPage}
+              fromPage={fromPage}
+              currPage={currPage}
+              maxPage={maxPage}
+              setCurrPage={setCurrPage}
+            />
+          ) : (
+            <></>
+          )}
+          <section className={`fixed bottom-5 right-5`}>
+            <TopBotton />
+          </section>
+        </div>
+      </Container>
+    </>
   );
 };
 

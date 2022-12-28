@@ -21,15 +21,17 @@ const Post = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
   };
 
   return (
-    <Container customMeta={customMeta}>
-      <BlogContent post={post} MDXComponent={MDXComponent} />
-      <section className={`fixed bottom-16 right-5`}>
-        <BackBotton />
-      </section>
-      <section className={`fixed bottom-5 right-5`}>
-        <TopBotton />
-      </section>
-    </Container>
+    <>
+      <Container customMeta={customMeta}>
+        <BlogContent post={post} MDXComponent={MDXComponent} />
+        <section className={`fixed bottom-16 right-5`}>
+          <BackBotton />
+        </section>
+        <section className={`fixed bottom-5 right-5`}>
+          <TopBotton />
+        </section>
+      </Container>
+    </>
   );
 };
 

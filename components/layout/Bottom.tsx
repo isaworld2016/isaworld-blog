@@ -1,17 +1,17 @@
+import metadata from "data/metadata";
 import Image from "next/image";
 
 const Bottom = () => {
+  const github = metadata.author[0].contacts.github;
+  const mail = metadata.author[0].contacts.email;
+
   return (
     <div className={`footer`}>
       <div className={`footer__container`}>
         <div className={`footer-left`}>
           <div className={`footer-left__lists`}>
             <ul className={`footer-left__list`}>
-              <li
-                onClick={() =>
-                  window.open("https://github.com/isaworld2016", "_blank")
-                }
-              >
+              <li onClick={() => window.open(`${github}`, "_blank")}>
                 <Image
                   src={`/images/github.png`}
                   alt="@isaworld2016"
@@ -22,13 +22,13 @@ const Bottom = () => {
               </li>
               <li>
                 <a
-                  href="https://mail.google.com/mail/?view=cm&fs=1&to=isaworld2016@gmail.com"
+                  href={`https://mail.google.com/mail/?view=cm&fs=1&to=${mail}`}
                   target="_blank"
                   rel="noreferrer"
                 >
                   <Image
                     src={`/images/mail.png`}
-                    alt="isaworld2016@gmail.com"
+                    alt={mail}
                     width={23}
                     height={23}
                     className={`cursor-pointer`}
@@ -43,9 +43,7 @@ const Bottom = () => {
           <p>Stack OverFlow 아래 뫼이로다</p>
         </div>
       </div>
-      <div className={`copy-right`}>
-        ©2022 isaworld - All Right Reserved
-      </div>
+      <div className={`copy-right`}>{metadata.copyright}</div>
     </div>
   );
 };

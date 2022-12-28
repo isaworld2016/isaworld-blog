@@ -5,6 +5,8 @@ import { useMDXComponent } from "next-contentlayer/hooks";
 import TopBotton from "components/atom/TopBotton";
 import BackBotton from "components/atom/BackBotton";
 import { allNexts } from "contentlayer/generated";
+import metadata from "data/metadata";
+import { NextSeo } from "next-seo";
 
 const Post = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const MDXComponent = useMDXComponent(post.body.code);
@@ -21,15 +23,32 @@ const Post = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
   };
 
   return (
-    <Container customMeta={customMeta}>
-      <BlogContent post={post} MDXComponent={MDXComponent} />
-      <section className={`fixed bottom-16 right-5`}>
-        <BackBotton />
-      </section>
-      <section className={`fixed bottom-5 right-5`}>
-        <TopBotton />
-      </section>
-    </Container>
+    <>
+      <NextSeo
+        title={`${post.title} - ${metadata.title}`}
+        description={`${post.description}`}
+        canonical={`${post.slug}`}
+        openGraph={{
+          type: "article",
+          article: {
+            publishedTime: `${post.date}`,
+            authors: [metadata.author[0].id],
+          },
+          url: `https://isaworld-blog.vercel.app/${post.slug}`,
+          title: `${post.title}`,
+          description: `${post.description}`,
+        }}
+      />
+      <Container customMeta={customMeta}>
+        <BlogContent post={post} MDXComponent={MDXComponent} />
+        <section className={`fixed bottom-16 right-5`}>
+          <BackBotton />
+        </section>
+        <section className={`fixed bottom-5 right-5`}>
+          <TopBotton />
+        </section>
+      </Container>
+    </>
   );
 };
 

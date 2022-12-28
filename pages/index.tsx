@@ -3,25 +3,36 @@ import Image from "next/image";
 import RecentPosts from "components/organism/RecentPosts";
 import { InferGetStaticPropsType } from "next";
 import { allDocuments } from "contentlayer/generated";
+import { NextSeo } from "next-seo";
 
 const Home = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
-    <Container>
-      <div className={`my-5 w-full`}>
-        <div className={`relative`}>
-          <Image
-            src={`/images/어른.png`}
-            alt="피할수없다면"
-            width={`80%`}
-            height={35}
-            layout={`responsive`}
-            objectFit="cover"
-            className={`rounded-3xl`}
-          />
+    <>
+      <NextSeo
+        title="home"
+        description="Isaworld Blog의 home"
+        canonical="https://isaworld-blog.vercel.app"
+        openGraph={{
+          url: "https://isaworld-blog.vercel.app",
+        }}
+      />
+      <Container>
+        <div className={`my-5 w-full`}>
+          <div className={`relative`}>
+            <Image
+              src={`/images/어른.png`}
+              alt="피할수없다면"
+              width={`80%`}
+              height={35}
+              layout={`responsive`}
+              objectFit="cover"
+              className={`rounded-3xl`}
+            />
+          </div>
+          <RecentPosts posts={posts} />
         </div>
-        <RecentPosts posts={posts} />
-      </div>
-    </Container>
+      </Container>
+    </>
   );
 };
 
