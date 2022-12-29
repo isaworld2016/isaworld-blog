@@ -6,6 +6,7 @@ import usePagination from "hooks/usePagination";
 import { allNexts, DocumentTypes } from ".contentlayer/generated";
 import PostLists from "components/organism/PostLists";
 import useSearchPost from "hooks/useSearchPost";
+import NoResult from "components/atom/NoResult";
 
 const NextPage = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { searchPosts } = useSearchPost(posts);
@@ -40,7 +41,7 @@ const NextPage = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => 
             setCurrPage={setCurrPage}
           />
         ) : (
-          <></>
+          <NoResult />
         )}
         <section className={`fixed bottom-5 right-5`}>
           <TopBotton />

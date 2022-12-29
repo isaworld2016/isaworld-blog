@@ -6,6 +6,7 @@ import TopBotton from "components/atom/TopBotton";
 import usePagination from "hooks/usePagination";
 import { allOthers, DocumentTypes } from "contentlayer/generated";
 import useSearchPost from "hooks/useSearchPost";
+import NoResult from "components/atom/NoResult";
 
 const OtherPage = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { searchPosts } = useSearchPost(posts);
@@ -40,7 +41,7 @@ const OtherPage = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) =>
             setCurrPage={setCurrPage}
           />
         ) : (
-          <></>
+          <NoResult />
         )}
         <section className={`fixed bottom-5 right-5`}>
           <TopBotton />

@@ -7,6 +7,7 @@ import usePagination from "hooks/usePagination";
 import useSearchPost from "hooks/useSearchPost";
 import { NextSeo } from "next-seo";
 import {  DocumentTypes, allDocuments } from "contentlayer/generated";
+import NoResult from "components/atom/NoResult";
 
 const BlogPage = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { searchPosts } = useSearchPost(posts);
@@ -50,7 +51,7 @@ const BlogPage = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => 
               setCurrPage={setCurrPage}
             />
           ) : (
-            <span className="my-5 mx-5">검색 결과가 없습니다.😛</span>
+            <NoResult />
           )}
           <section className={`fixed bottom-5 right-5`}>
             <TopBotton />
