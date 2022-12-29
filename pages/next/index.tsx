@@ -4,7 +4,7 @@ import Pagination from "components/atom/Pagination";
 import TopBotton from "components/atom/TopBotton";
 import usePagination from "hooks/usePagination";
 import { Next, allNexts, DocumentTypes } from ".contentlayer/generated";
-import PostList from "components/organism/PostList";
+import PostLists from "components/organism/PostLists";
 import useSearchPost from "hooks/useSearchPost";
 
 const NextPage = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
@@ -30,7 +30,7 @@ const NextPage = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => 
   return (
     <Container>
       <div className={`flex flex-col`}>
-        <PostList
+        <PostLists
           searchTitle={searchTitle}
           onChangeSearchTitle={onChangeSearchTitle}
           clearSearchInput={clearSearchInput}

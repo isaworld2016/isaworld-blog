@@ -1,5 +1,5 @@
 import { InferGetStaticPropsType } from "next";
-import PostList from "components/organism/PostList";
+import PostLists from "components/organism/PostLists";
 import Container from "components/layout/Container";
 import Pagination from "components/atom/Pagination";
 import TopBotton from "components/atom/TopBotton";
@@ -42,7 +42,7 @@ const BlogPage = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => 
       />
       <Container>
         <div className={`flex flex-col`}>
-          <PostList
+          <PostLists
             searchTitle={searchTitle}
             onChangeSearchTitle={onChangeSearchTitle}
             clearSearchInput={clearSearchInput}

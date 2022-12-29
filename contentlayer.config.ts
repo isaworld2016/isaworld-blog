@@ -6,10 +6,26 @@ export const Other = defineDocumentType(() => ({
   contentType: "mdx",
   filePathPattern: `other/*.mdx`,
   fields: {
-    title: { type: "string", required: true },
-    date: { type: "string", required: true },
-    description: { type: "string", required: true },
-    category: { type: "string", required: true },
+    title: {
+      type: "string",
+      required: true
+    },
+    date: {
+      type: "string",
+      required: true
+    },
+    description: {
+      type: "string",
+      required: true
+    },
+    category: {
+      type: "string",
+      required: true
+    },
+    thumbnail: {
+      type: "string",
+      required: false
+    }
   },
   computedFields: {
     slug: {
@@ -24,10 +40,29 @@ export const Next = defineDocumentType(() => ({
   contentType: "mdx",
   filePathPattern: `next/*.mdx`,
   fields: {
-    title: { type: "string", description: "The title of the post", required: true },
-    date: { type: "string", description: "The date of the post", required: true },
-    description: { type: "string", description: "The description of the post", required: true },
-    category: { type: "string", required: false },
+    title: {
+      type: "string",
+      description: "The title of the post",
+      required: true
+    },
+    date: {
+      type: "string",
+      description: "The date of the post",
+      required: true
+    },
+    description: {
+      type: "string",
+      description: "The description of the post",
+      required: true
+    },
+    category: {
+      type: "string",
+      required: false
+    },
+    thumbnail: {
+      type: "string",
+      required: false
+    }
   },
   computedFields: {
     slug: {

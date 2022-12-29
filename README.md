@@ -13,9 +13,9 @@ yarn dev
 ## Nexjs
 ## sass
 ## Atomic Design Pattern
-* atom: 원자. 위치 속성을 가지지 않음.
-* molecule: 분자. 원자의 기능이나 위치를 만들어 줄 수 있다.
-* organism: 유기체. 분자와 원자의 위치값을 조정.
+* atom(원자): 위치 속성을 가지지 않음.
+* molecule(분자): 원자를 엮어 조금 복잡한 덩어리. 하위 레벨의 위치값 조정.
+* organism(유기체): 분자가 되지 않은 원자가 엮이기도. 하위 레벨의 위치값 조정.
 
 ## Code Convention
 * .tsx = Pascal case

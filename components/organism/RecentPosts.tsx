@@ -15,7 +15,6 @@ const RecentPosts = ({
             className={`w-full my-2 ml-1 transition ease-in-out hover:-translate-x-1.5`}
           >
             <Link
-              key={post._id}
               href={`${post.category}/${post.slug}`}
               passHref
             >
