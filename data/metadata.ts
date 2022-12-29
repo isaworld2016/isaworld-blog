@@ -18,7 +18,7 @@ const metadata: Metadata = {
   ],
   rowsPerPage: 10,
   locale: 'ko_KR',
-  copyright: `${now.format('YYYY')} isaworld - All Right Reserved`,
+  copyright: `ⓒ ${now.format('YYYY')} Isaworld All rights reserved.`,
 };
 
 export default metadata;
