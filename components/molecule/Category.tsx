@@ -2,12 +2,12 @@ import blogList from "data/blogList";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import SEO from "seo.config";
 
-interface props {
+interface Props {
   totalCount: number;
 }
-const Category = ({ totalCount }: props) => {
+
+const Category = ({ }: Props) => {
   const [on, setOn] = useState(false);
   const currPath = useRouter().pathname;
 
@@ -26,13 +26,7 @@ const Category = ({ totalCount }: props) => {
               <a
                 href={blog.link}
                 className={`mr-5 flex justify-between ${
-                  blog.link === currPath
-                    ? `text-[${
-                        SEO.additionalMetaTags.filter(
-                          (a) => a.name == "theme-color"
-                        )[0].content
-                      }]`
-                    : ``
+                  blog.link === currPath ? `text-[#F36727]` : ``
                 }`}
               >
                 <span className={`mr-4`}>

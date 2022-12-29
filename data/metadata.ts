@@ -19,6 +19,11 @@ const metadata: Metadata = {
   rowsPerPage: 10,
   locale: 'ko_KR',
   copyright: `ⓒ ${now.format('YYYY')} Isaworld All rights reserved.`,
+  theme: {
+    colors: {
+      primary: "#F36727"
+    }
+  }
 };
 
 export default metadata;

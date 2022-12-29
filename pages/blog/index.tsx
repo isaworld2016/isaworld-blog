@@ -6,18 +6,10 @@ import TopBotton from "components/atom/TopBotton";
 import usePagination from "hooks/usePagination";
 import useSearchPost from "hooks/useSearchPost";
 import { NextSeo } from "next-seo";
-import {
-  DocumentTypes,
-  allDocuments,
-} from "contentlayer/generated";
+import {  DocumentTypes, allDocuments } from "contentlayer/generated";
 
 const BlogPage = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const {
-    searchTitle,
-    searchPosts,
-    onChangeSearchTitle,
-    clearSearchInput,
-  } = useSearchPost(posts);
+  const { searchPosts } = useSearchPost(posts);
 
   const {
     setFromPage,
@@ -43,13 +35,10 @@ const BlogPage = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => 
       <Container>
         <div className={`flex flex-col`}>
           <PostLists
-            searchTitle={searchTitle}
-            onChangeSearchTitle={onChangeSearchTitle}
-            clearSearchInput={clearSearchInput}
             posts={searchPosts.slice(fromPage, toPage)}
             totalCount={searchPosts.length}
           />
-          {posts.length != 0 ? (
+          {searchPosts.length > 0 ? (
             <Pagination
               setFromPage={setFromPage}
               setToPage={setToPage}
@@ -61,7 +50,7 @@ const BlogPage = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => 
               setCurrPage={setCurrPage}
             />
           ) : (
-            <></>
+            <span className="my-5 mx-5">검색 결과가 없습니다.😛</span>
           )}
           <section className={`fixed bottom-5 right-5`}>
             <TopBotton />

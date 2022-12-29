@@ -3,18 +3,12 @@ import Container from "components/layout/Container";
 import Pagination from "components/atom/Pagination";
 import TopBotton from "components/atom/TopBotton";
 import usePagination from "hooks/usePagination";
-import { Next, allNexts, DocumentTypes } from ".contentlayer/generated";
+import { allNexts, DocumentTypes } from ".contentlayer/generated";
 import PostLists from "components/organism/PostLists";
 import useSearchPost from "hooks/useSearchPost";
 
 const NextPage = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const {
-    searchTitle,
-    searchPosts,
-    onChangeSearchTitle,
-    getSearchPost,
-    clearSearchInput,
-  } = useSearchPost(posts);
+  const { searchPosts } = useSearchPost(posts);
 
   const {
     setFromPage,
@@ -31,9 +25,6 @@ const NextPage = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => 
     <Container>
       <div className={`flex flex-col`}>
         <PostLists
-          searchTitle={searchTitle}
-          onChangeSearchTitle={onChangeSearchTitle}
-          clearSearchInput={clearSearchInput}
           posts={searchPosts.slice(fromPage, toPage)}
           totalCount={searchPosts.length}
         />

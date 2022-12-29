@@ -1,13 +1,12 @@
 import Link from "next/link";
 import { DocumentTypes } from "contentlayer/generated";
-import SEO from "seo.config";
 import Image from "next/image";
 
-interface props {
+interface Props {
   posts: DocumentTypes[];
 }
 
-const PostList = ({ posts }: props) => {
+const PostList = ({ posts }: Props) => {
   return (
     <>
       {posts.map((post) => (
@@ -28,19 +27,13 @@ const PostList = ({ posts }: props) => {
                   <span className={`font-light text-xs text-gray-400`}>
                     {post.date}
                   </span>
-                  <span
-                    className={`font-semibold text-xs text-[${
-                      SEO.additionalMetaTags.filter(
-                        (a) => a.name == "theme-color"
-                      )[0].content
-                    }]`}
-                  >
+                  <span className={`font-semibold text-xs text-[#F36727]`}>
                     &nbsp;#{post.category}
                   </span>
                 </div>
               </section>
               <span className="box-border inline-block relative overflow-hidden padding-0 margin-0 border-0">
-                {post.thumbnail &&
+                {post.thumbnail && (
                   <Image
                     src={post.thumbnail}
                     alt="thumbnail"
@@ -49,7 +42,7 @@ const PostList = ({ posts }: props) => {
                     objectFit="cover"
                     className={`cursor-pointer rounded-lg`}
                   />
-                }
+                )}
               </span>
             </a>
           </Link>

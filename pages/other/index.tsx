@@ -8,13 +8,7 @@ import { allOthers, DocumentTypes } from "contentlayer/generated";
 import useSearchPost from "hooks/useSearchPost";
 
 const OtherPage = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const {
-    searchTitle,
-    searchPosts,
-    onChangeSearchTitle,
-    getSearchPost,
-    clearSearchInput,
-  } = useSearchPost(posts);
+  const { searchPosts } = useSearchPost(posts);
 
   const {
     setFromPage,
@@ -31,9 +25,6 @@ const OtherPage = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) =>
     <Container>
       <div className={`flex flex-col`}>
         <PostLists
-          searchTitle={searchTitle}
-          onChangeSearchTitle={onChangeSearchTitle}
-          clearSearchInput={clearSearchInput}
           posts={searchPosts.slice(fromPage, toPage)}
           totalCount={searchPosts.length}
         />

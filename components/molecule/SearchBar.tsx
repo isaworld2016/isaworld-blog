@@ -1,62 +1,65 @@
-import { useMemo, useRef, useState, useEffect } from "react";
+import { useMemo, useRef, useEffect } from "react";
 import SearchIcon from "public/assets/icons/Search";
 import CancelIcon from "public/assets/icons/Cancel";
+import { useSearchBarInputAction } from "modules/searchBar/action";
 
-interface SearchBarProps {
-  searchTitle: string;
-  onChangeSearchTitle: React.ChangeEventHandler<HTMLInputElement>;
-  clearSearchInput: () => void;
-}
-const SearchBar = ({
-  searchTitle,
-  onChangeSearchTitle,
-  clearSearchInput,
-}: SearchBarProps) => {
-  const [questionYn, setQuestionYn] = useState<boolean>(false);
-
-  const changeButton = () => setQuestionYn(!questionYn);
+const SearchBar = () => {
+  const {
+    searchInput,
+    changeSearchBarInput,
+    initSearchBarInput,
+    isQuestion,
+    toggleIsQuestion,
+  } = useSearchBarInputAction();
 
   const inputRef = useRef<HTMLInputElement>(null);
+
   useEffect(() => {
     if (inputRef.current !== null) inputRef.current.focus();
   });
 
   const getSearchClass = () => {
     const base = `search-bar`;
-    if (questionYn) {
-      clearSearchInput();
+
+    if(isQuestion) {
+      // initSearchBarInput();
       return base.concat(` show`);
     } else return base;
   };
 
   const searchClass = useMemo(
     () => getSearchClass(),
-    [questionYn]
+    [isQuestion]
   );
 
   return (
     <div className={searchClass}>
-    {questionYn ? (
+      {isQuestion ? (
         <>
           <input
             ref={inputRef}
             autoComplete="off"
             className={`search-bar__input`}
             placeholder="검색어를 입력하세요 😎"
-            value={searchTitle}
-            onChange={onChangeSearchTitle}
+            value={searchInput}
+            onChange={changeSearchBarInput}
           />
-          <button onClick={() => changeButton()} className={`search-bar__button`}>
+          <button
+            onClick={() => toggleIsQuestion()}
+            className={`search-bar__button`}
+          >
             <CancelIcon width="16" height="16" fill="#CECECE" toLeftYn={true} />
           </button>
         </>
       ) : (
-        <button onClick={() => changeButton()} className={`search-bar__button`}>
+        <button
+          onClick={() => toggleIsQuestion()}
+          className={`search-bar__button`}
+        >
           <SearchIcon width="18" height="18" fill="#CECECE" toLeftYn={true} />
         </button>
-      )
-    }
-  </div>
+      )}
+    </div>
   );
 };
 export default SearchBar;

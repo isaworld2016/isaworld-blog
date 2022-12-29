@@ -1,0 +1,2 @@
+export const SEARCH_BAR_INPUT_KEY = 'SEARCH_BAR_INPUT_KEY';
+export const IS_QUESTION_KEY = 'IS_QUESTION_KEY';

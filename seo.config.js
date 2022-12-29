@@ -8,7 +8,7 @@ export default {
       href: "/favicon.ico",
     },
     {
-      rel: "manifest",
+      rel: "/manifest",
       href: "/manifest.json",
     },
   ],

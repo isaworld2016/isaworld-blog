@@ -5,6 +5,7 @@ export interface Metadata {
   rowsPerPage: number;
   locale: string;
   copyright: string;
+  theme: Theme
 }
 
 interface Author{
@@ -16,4 +17,12 @@ interface Author{
 interface Contacts {
   email: string,
   github: string,
+}
+
+interface Theme {
+  colors: Colors,
+}
+
+interface Colors {
+  primary: string,
 }

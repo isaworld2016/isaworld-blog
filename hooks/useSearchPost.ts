@@ -1,22 +1,16 @@
 import { DocumentTypes } from 'contentlayer/generated';
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
+import { useSearchBarInputAction } from "modules/searchBar/action";
 
 export default function useSearchPost(allPosts: DocumentTypes[]) {
-  const [searchTitle, setSearchTitle] = useState("");
-
-  const onChangeSearchTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchTitle(e.target.value);
-  };
-
-  const clearSearchInput = () => setSearchTitle("");
+  const { searchInput } = useSearchBarInputAction();
 
   const getSearchPost = () => {
-    if (searchTitle !== "") {
+    if (searchInput !== "") {
       const temp: DocumentTypes[] = allPosts.filter((post) => {
-        console.log(post.type)
-        return new RegExp(searchTitle.replace(/ /g, ''), "gim").test(post.title.replace(/ /g, ''))
-          || new RegExp(searchTitle.replace(/ /g, ''), "gim").test(post.description.replace(/ /g, ''))
-          || new RegExp(searchTitle.replace(/ /g, ''), "gim").test(post.body.raw.replace(/ /g, ''))
+        return new RegExp(searchInput.replace(/ /g, ''), "gim").test(post.title.replace(/ /g, ''))
+          || new RegExp(searchInput.replace(/ /g, ''), "gim").test(post.description.replace(/ /g, ''))
+          || new RegExp(searchInput.replace(/ /g, ''), "gim").test(post.body.raw.replace(/ /g, ''))
       });
       return temp;
     } else {
@@ -24,13 +18,9 @@ export default function useSearchPost(allPosts: DocumentTypes[]) {
     }
   }
 
-  const searchPosts = useMemo(() => getSearchPost(), [searchTitle]);
+  const searchPosts = useMemo(() => getSearchPost(), [searchInput]);
 
   return {
-    searchTitle,
-    searchPosts,
-    onChangeSearchTitle,
-    getSearchPost,
-    clearSearchInput
+    searchPosts
   }
 }
