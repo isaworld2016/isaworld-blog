@@ -12,9 +12,6 @@ const Home = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
         title="home"
         description="Isaworld Blog의 home"
         canonical="https://isaworld-blog.vercel.app"
-        openGraph={{
-          url: "https://isaworld-blog.vercel.app",
-        }}
       />
       <Container>
         <div className={`my-5 w-full`}>

@@ -21,6 +21,14 @@ export default {
   openGraph: {
     type: "website",
     site_name: metadata.title,
-    images: [{ url: "https://example.com/example_square_image.png" }],
+    url: "https://isaworld-blog.vercel.app",
+    images: [
+      {
+        url: "https://user-images.githubusercontent.com/57585701/210198765-a6bc65ba-330e-4673-8c6e-cd898623dec4.jpg",
+        width: 285,
+        height: 167,
+        alt: "이미지",
+      },
+    ],
   },
 };

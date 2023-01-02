@@ -72,8 +72,45 @@ export const Next = defineDocumentType(() => ({
   },
 }));
 
+export const Isa = defineDocumentType(() => ({
+  name: "Isa",
+  contentType: "mdx",
+  filePathPattern: `isa/*.mdx`,
+  fields: {
+    title: {
+      type: "string",
+      description: "The title of the post",
+      required: true
+    },
+    date: {
+      type: "string",
+      description: "The date of the post",
+      required: true
+    },
+    description: {
+      type: "string",
+      description: "The description of the post",
+      required: true
+    },
+    category: {
+      type: "string",
+      required: false
+    },
+    thumbnail: {
+      type: "string",
+      required: false
+    }
+  },
+  computedFields: {
+    slug: {
+      type: 'string',
+      resolve: (doc) => `${doc._raw.sourceFileName.replace(/\.mdx$/, "")}`,
+    },
+  },
+}));
+
 export default makeSource({
   contentDirPath: "posts",
-  documentTypes: [Other, Next],
+  documentTypes: [Other, Next, Isa],
   mdx: { rehypePlugins: [highlight] },
 });

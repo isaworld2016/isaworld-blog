@@ -53,9 +53,6 @@ const BlogPage = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => 
           ) : (
             <NoResult />
           )}
-          <section className={`fixed bottom-5 right-5`}>
-            <TopBotton />
-          </section>
         </div>
       </Container>
     </>

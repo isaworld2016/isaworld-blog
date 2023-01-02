@@ -42,10 +42,10 @@ const Post = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
       <Container customMeta={customMeta}>
         <BlogContent post={post} MDXComponent={MDXComponent} />
         <section className={`fixed bottom-16 right-5`}>
-          <BackBotton />
+          <TopBotton />
         </section>
         <section className={`fixed bottom-5 right-5`}>
-          <TopBotton />
+          <BackBotton />
         </section>
       </Container>
     </>

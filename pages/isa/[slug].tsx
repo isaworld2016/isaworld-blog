@@ -4,7 +4,7 @@ import { InferGetStaticPropsType, GetStaticProps, GetStaticPaths } from "next";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import TopBotton from "components/atom/TopBotton";
 import BackBotton from "components/atom/BackBotton";
-import { allNexts } from "contentlayer/generated";
+import { allIsas } from "contentlayer/generated";
 import metadata from "data/metadata";
 import { NextSeo } from "next-seo";
 
@@ -54,13 +54,13 @@ const Post = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    paths: allNexts.map((p) => ({ params: { slug: p.slug } })),
+    paths: allIsas.map((p) => ({ params: { slug: p.slug } })),
     fallback: false,
   };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const post = allNexts.find((p) => p.slug === params?.slug);
+  const post = allIsas.find((p) => p.slug === params?.slug);
   return {
     props: {
       post,

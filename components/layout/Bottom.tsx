@@ -39,8 +39,8 @@ const Bottom = () => {
           </div>
         </div>
         <div className={`footer-right`}>
-          <p>버그가 많다 하되</p>
-          <p>Stack OverFlow 아래 뫼이로다</p>
+          <p>태산이 높다 하되</p>
+          <p>하늘 아래 뫼이로다</p>
         </div>
       </div>
       <div className={`copy-right`}>{metadata.copyright}</div>

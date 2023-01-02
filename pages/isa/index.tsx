@@ -1,14 +1,13 @@
 import { InferGetStaticPropsType } from "next";
 import Container from "components/layout/Container";
 import Pagination from "components/atom/Pagination";
-import TopBotton from "components/atom/TopBotton";
 import usePagination from "hooks/usePagination";
-import { allNexts, DocumentTypes } from ".contentlayer/generated";
+import { allIsas, DocumentTypes } from ".contentlayer/generated";
 import PostLists from "components/organism/PostLists";
 import useSearchPost from "hooks/useSearchPost";
 import NoResult from "components/atom/NoResult";
 
-const NextPage = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
+const IsaPage = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { searchPosts } = useSearchPost(posts);
 
   const {
@@ -49,7 +48,7 @@ const NextPage = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => 
 };
 
 export const getStaticProps = async () => {
-  const posts = allNexts.sort(
+  const posts = allIsas.sort(
     (a, b) => Number(new Date(b.date)) - Number(new Date(a.date))
   );
 
@@ -60,4 +59,4 @@ export const getStaticProps = async () => {
   };
 };
 
-export default NextPage;
+export default IsaPage;
