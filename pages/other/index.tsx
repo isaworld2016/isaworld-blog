@@ -2,11 +2,15 @@ import { InferGetStaticPropsType } from "next";
 import PostLists from "components/organism/PostLists";
 import Container from "components/layout/Container";
 import Pagination from "components/atom/Pagination";
-import TopBotton from "components/atom/TopBotton";
 import usePagination from "hooks/usePagination";
 import { allOthers, DocumentTypes } from "contentlayer/generated";
 import useSearchPost from "hooks/useSearchPost";
 import NoResult from "components/atom/NoResult";
+import { getStaticPropsSort } from "common/utils/getStaticPropsMakers";
+
+export const getStaticProps = async () => {
+ return getStaticPropsSort(allOthers);
+};
 
 const OtherPage = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { searchPosts } = useSearchPost(posts);
@@ -46,18 +50,6 @@ const OtherPage = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) =>
       </div>
     </Container>
   );
-};
-
-export const getStaticProps = async () => {
-  const posts = allOthers.sort(
-    (a, b) => Number(new Date(b.date)) - Number(new Date(a.date))
-  );
-
-  return {
-    props: {
-      posts,
-    },
-  };
 };
 
 export default OtherPage;

@@ -6,6 +6,11 @@ import { allIsas, DocumentTypes } from ".contentlayer/generated";
 import PostLists from "components/organism/PostLists";
 import useSearchPost from "hooks/useSearchPost";
 import NoResult from "components/atom/NoResult";
+import { getStaticPropsSort } from "common/utils/getStaticPropsMakers";
+
+export const getStaticProps = async () => {
+  return getStaticPropsSort(allIsas);
+};
 
 const IsaPage = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { searchPosts } = useSearchPost(posts);
@@ -45,18 +50,6 @@ const IsaPage = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
       </div>
     </Container>
   );
-};
-
-export const getStaticProps = async () => {
-  const posts = allIsas.sort(
-    (a, b) => Number(new Date(b.date)) - Number(new Date(a.date))
-  );
-
-  return {
-    props: {
-      posts,
-    },
-  };
 };
 
 export default IsaPage;

@@ -7,6 +7,20 @@ import BackBotton from "components/atom/BackBotton";
 import { allNexts } from "contentlayer/generated";
 import metadata from "data/metadata";
 import { NextSeo } from "next-seo";
+import { getStaticPropsMap } from "common/utils/getStaticPropsMakers";
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return getStaticPropsMap(allNexts);
+};
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const post = allNexts.find((p) => p.slug === params?.slug);
+  return {
+    props: {
+      post,
+    },
+  };
+};
 
 const Post = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const MDXComponent = useMDXComponent(post.body.code);
@@ -16,6 +30,7 @@ const Post = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
     description: string;
     date: string
   }
+
   const customMeta: CustomMeta = {
     title: post.title,
     description: post.description,
@@ -37,6 +52,14 @@ const Post = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
           url: `https://isaworld-blog.vercel.app/${post.slug}`,
           title: `${post.title}`,
           description: `${post.description}`,
+          images: [
+            {
+              url: `${post.thumbnail}`,
+              width: 285,
+              height: 167,
+              alt: "thumbnail",
+            },
+          ],
         }}
       />
       <Container customMeta={customMeta}>
@@ -50,22 +73,6 @@ const Post = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
       </Container>
     </>
   );
-};
-
-export const getStaticPaths: GetStaticPaths = async () => {
-  return {
-    paths: allNexts.map((p) => ({ params: { slug: p.slug } })),
-    fallback: false,
-  };
-};
-
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const post = allNexts.find((p) => p.slug === params?.slug);
-  return {
-    props: {
-      post,
-    },
-  };
 };
 
 export default Post;
