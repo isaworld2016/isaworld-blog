@@ -9,8 +9,8 @@ const Home = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
       <NextSeo
-        title="home"
-        description="Isaworld Blog의 home"
+        title="안녕!"
+        description="천재적인 이자님의 블로그"
         canonical="https://isaworld-blog.vercel.app"
       />
       <Container>
