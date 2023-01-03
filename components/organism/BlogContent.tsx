@@ -6,7 +6,7 @@ interface BlogContent {
 }
 const BlogContent = ({ post, MDXComponent }: BlogContent) => {
   return (
-    <article className={`mt-10 prose max-w-none`}>
+    <article className={`my-10 prose max-w-none`}>
       <h1 className={`text-neutral-900 text-center`}>{post.title}</h1>
       <h1 className={`text-neutral-400 font-medium text-base text-center`}>{post.description}</h1>
       <h3 className={`text-neutral-400 font-medium text-base text-end`}>{post.date}</h3>
