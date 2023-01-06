@@ -29,7 +29,7 @@ export const projectList: ProjectList[] = [
     ]
   },
   {
-    title: "VAN PG",
+    title: "VAN PG 백오피스 구축",
     period: "2021.04 - 2022.02(11개월)",
     environment: [
       "DB: MariaDB",
@@ -47,7 +47,7 @@ export const projectList: ProjectList[] = [
     ]
   },
   {
-    title: "CJ PAY 간편결제 시스템구축",
+    title: "CJ PAY 간편결제 시스템 구축",
     period: "2022.03 - 2022.09(7개월)",
     environment: [
       "Infra: NCP(네이버 클라우드 플랫폼)",
@@ -69,7 +69,7 @@ export const projectList: ProjectList[] = [
     ]
   },
   {
-    title: "스마트로 간편결제 시스템구축",
+    title: "스마트로 간편결제 시스템 구축",
     period: "2022.10 - 2022.12 (3개월)",
     environment: [
       "DB: MariaDB",

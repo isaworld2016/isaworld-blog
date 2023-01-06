@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import UpIcon from "public/assets/icons/Up";
 
-const TopBotton = () => {
+const TopButton = () => {
   const [isScroll, setIsScroll] = useState(false);
 
   const handleScroll = () => {
@@ -26,4 +26,4 @@ const TopBotton = () => {
     </>
   );
 }
-export default TopBotton;
+export default TopButton;

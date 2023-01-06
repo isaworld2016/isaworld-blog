@@ -1,7 +1,7 @@
 import BackIcon from "public/assets/icons/Back";
 import { useRouter } from "next/router";
 
-const BackBotton = () => {
+const BackButton = () => {
   const router = useRouter();
   return (
     <>
@@ -11,4 +11,4 @@ const BackBotton = () => {
     </>
   );
 };
-export default BackBotton;
+export default BackButton;

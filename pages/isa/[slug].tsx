@@ -2,8 +2,8 @@ import Container from "components/layout/Container";
 import BlogContent from "components/organism/BlogContent";
 import { InferGetStaticPropsType, GetStaticProps, GetStaticPaths } from "next";
 import { useMDXComponent } from "next-contentlayer/hooks";
-import TopBotton from "components/atom/TopBotton";
-import BackBotton from "components/atom/BackBotton";
+import TopButton from "components/atom/TopButton";
+import BackButton from "components/atom/BackButton";
 import { allIsas } from "contentlayer/generated";
 import metadata from "data/metadata";
 import { NextSeo } from "next-seo";
@@ -70,10 +70,10 @@ const Post = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
       <Container customMeta={customMeta}>
         <BlogContent post={post} MDXComponent={MDXComponent} />
         <section className={`fixed bottom-16 right-5`}>
-          <TopBotton />
+          <TopButton />
         </section>
         <section className={`fixed bottom-5 right-5`}>
-          <BackBotton />
+          <BackButton />
         </section>
       </Container>
     </>
