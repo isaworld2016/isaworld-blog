@@ -68,10 +68,10 @@ drop sequence mer_no_seq;
 ```sql
 insert into cmp_merchant_inf (BIZ_NO, MER_NO, MER_DIV_CD)
 values (
-        '20000000002',
-        nextval(mer_no_seq),
-        '1'
-       );
+    '20000000002',
+    nextval(mer_no_seq),
+    '1'
+);
 ```
 
 ### 2) 서버 코드 안에서 활용
@@ -85,6 +85,3 @@ if (nvl(vo.getMerNo())) {
     vo.setMerNo(String.format("M%s", StringUtils.leftPad(merNoSequence, 9, "0")));
 }
 ```
-
-
-
