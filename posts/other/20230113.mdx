@@ -5,19 +5,33 @@ description: 1씩 증가하는 가맹점 번호 매기기
 category: other
 ---
 
-## 1. 시퀀스를 사용할 수 있는지 버전 확인(10.3 이상)
-```sql
--- 데이터그립이나 디비버 같은 데이터베이스 툴에서 콘솔을 열어 실행
+## [ 필요 ]
+가맹점 번호나 브랜드 번호 등은 데이터가 생성될 때마다 일정한 규칙으로 증가 되어야 한다.
+이전에는 select로 max값을 조회해서 +1 하는 식으로 구현한 적도 있었는데
+데이터베이스의 시퀀스 객체를 활용하면 훨씬 간단한 코드로 구현할 수 있다.
 
+### 우리 시퀀스는요...
+- 유니크한 값을 생성해준다.
+- 테이블의 PK를 생성할 때 활용한다.
+- 테이블과 상관없이 생성된다. 따라서 여러 테이블이 하나의 시퀀스를 공유하는 것도 가능하다.
+- thread safe 하다고 한다. 여기저기에서 동시에 사용해도 된다는 얘기.
+
+---
+
+## 1. 시퀀스를 사용할 수 있는지 버전 확인(10.3 이상)
+#### 데이터그립이나 디비버 같은 데이터베이스 툴에서 콘솔을 열어 실행
+
+```sql
 SELECT VERSION();
 ```
-#### [ 결과 ]
-![db버전 확인](https://user-images.githubusercontent.com/57585701/212277278-293711a7-9733-4f63-b3f5-40b86d3a0b18.png)
+
+> - 결과
+> ![db버전 확인](https://user-images.githubusercontent.com/57585701/212277278-293711a7-9733-4f63-b3f5-40b86d3a0b18.png)
 
 ---
 
 ## 2. 시퀀스 생성
-#### - "'mer_no_seq'라는 이름의 시퀀스를 만들건데 값은 1000으로 시작하고 1씩 증가할거야."
+#### *'mer_no_seq'라는 이름의 시퀀스를 만들건데 값은 1000으로 시작하고 1씩 증가할거야.*
 
 ```sql
 create sequence mer_no_seq start with 1000 increment by 1;
@@ -29,42 +43,40 @@ create sequence mer_no_seq start with 1000 increment by 1;
 ```sql
 select * from mer_no_seq;
 ```
-
-#### [ 시퀀스가 없을 경우]
+> - 시퀀스가 없을 경우
 ![시퀀스가 없을 경우](https://user-images.githubusercontent.com/57585701/212280323-c6da2159-8136-4356-b49d-f6d047f7392b.png)
-#### [ 시퀀스가 있을 경우]
+> - 시퀀스가 있을 경우
 ![시퀀스가 있을 경우](https://user-images.githubusercontent.com/57585701/212280435-9803fe77-190f-4e59-9141-258c2d358776.png)
-
 
 ---
 
 ## 4. 값 얻기
-#### - 다음 값 도출
-```sql
-select NEXTVAL(mer_no_seq);
-```
-
-#### - 마지막 값 도출
-```sql
-select LASTVAL(mer_no_seq);
-```
+> - 다음 값 도출
+> ```sql
+> select NEXTVAL(mer_no_seq);
+> ```
+> - 마지막 값 도출
+> ```sql
+> select LASTVAL(mer_no_seq);
+> ```
 
 ---
 
 ## 5. 시퀀스 수정
-#### - 테스트 해서 증가된 시퀀스를 초기화 시키거나 할 때 사용
+#### *'mer_no_seq' 시퀀스를 1000부터 시작하도록 변경할거여.*
+
 ```sql
 alter sequence mer_no_seq restart 1000;
 ```
 
 ## 6. 시퀀스 삭제
-#### - 필요없으면 삭제한다.
+#### 필요없으면 삭제
 ```sql
 drop sequence mer_no_seq;
 ```
 
 ## 7. 시퀀스 사용
-### 1) 콘솔에서 insert 할 때 사용
+#### 1) 쿼리로 insert할 때 활용
 ```sql
 insert into cmp_merchant_inf (BIZ_NO, MER_NO, MER_DIV_CD)
 values (
@@ -74,7 +86,7 @@ values (
 );
 ```
 
-### 2) 서버 코드 안에서 활용
+#### 2) 서비스 단에서 활용
 ```java
 /* 수정이면 지점 번호를 채번한다. */
 if (nvl(vo.getMerNo())) {
