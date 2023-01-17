@@ -1,5 +1,7 @@
 import { defineDocumentType, makeSource } from "contentlayer/source-files";
 import highlight from 'rehype-highlight'
+import rehypePrism from "rehype-prism-plus";
+import rehypeCodeTitles from "rehype-code-titles";
 
 export const Other = defineDocumentType(() => ({
   name: "Other",
@@ -112,5 +114,5 @@ export const Isa = defineDocumentType(() => ({
 export default makeSource({
   contentDirPath: "posts",
   documentTypes: [Other, Next, Isa],
-  mdx: { rehypePlugins: [highlight] },
+  mdx: { rehypePlugins: [highlight, rehypeCodeTitles, rehypePrism] },
 });
