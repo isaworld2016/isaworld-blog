@@ -37,10 +37,10 @@ export const Other = defineDocumentType(() => ({
   },
 }));
 
-export const Next = defineDocumentType(() => ({
-  name: "Next",
+export const Style = defineDocumentType(() => ({
+  name: "Style",
   contentType: "mdx",
-  filePathPattern: `next/*.mdx`,
+  filePathPattern: `style/*.mdx`,
   fields: {
     title: {
       type: "string",
@@ -113,6 +113,6 @@ export const Isa = defineDocumentType(() => ({
 
 export default makeSource({
   contentDirPath: "posts",
-  documentTypes: [Other, Next, Isa],
+  documentTypes: [Other, Style, Isa],
   mdx: { rehypePlugins: [highlight, rehypeCodeTitles, rehypePrism] },
 });

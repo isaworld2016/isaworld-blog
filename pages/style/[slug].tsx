@@ -4,17 +4,17 @@ import { InferGetStaticPropsType, GetStaticProps, GetStaticPaths } from "next";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import TopButton from "components/atom/TopButton";
 import BackButton from "components/atom/BackButton";
-import { allNexts } from "contentlayer/generated";
+import { allStyles } from "contentlayer/generated";
 import metadata from "data/metadata";
 import { NextSeo } from "next-seo";
 import { getStaticPropsMap } from "common/utils/getStaticPropsMakers";
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  return getStaticPropsMap(allNexts);
+  return getStaticPropsMap(allStyles);
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const post = allNexts.find((p) => p.slug === params?.slug);
+  const post = allStyles.find((p) => p.slug === params?.slug);
   return {
     props: {
       post,

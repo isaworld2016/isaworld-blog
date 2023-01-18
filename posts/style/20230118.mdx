@@ -1,0 +1,50 @@
+---
+title: "[Style] svg 스타일링"
+date: 2023-01-18
+description: "hover와 느리게 등장하기 효과"
+category: style
+---
+
+## [ 필요 ]
+사용자가 데이터를 수정하기 위해서 입력을 하기 시작했을 때 '저장' 버튼이 나오게 하기 위해서 버튼 스타일링이 필요했다.
+버튼이 길을 안내하는 느낌이랄까.
+
+## 1. svg 코드
+```javascript
+<span class="slow-show save-btn-wrap">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
+        <path d="M14 3h2.997v5h-2.997v-5zm9 1v20h-22v-24h17.997l4.003 4zm-17 5h12v-7h-12v7zm14 4h-16v9h16v-9z"/>
+    </svg>
+</span>
+```
+
+#### 1) hover 스타일링
+```scss
+/* scss */
+/* path에 효과를 주도록 합니다. */
+.save-btn-wrap:hover svg > path{
+  fill: #999;
+}
+```
+
+#### 2) 페이드인 등장 효과
+```scss
+/* scss */
+.slow-show{
+  animation: fadein 1s;
+  -moz-animation: fadein 1s; /* Firefox */
+  -webkit-animation: fadein 1s; /* Safari and Chrome */
+  -o-animation: fadein 1s; /* Opera */
+}
+
+/* "fadein"이라는 애를 기술한 라인에서는 '투명도'를 0 -> 1로 이동시킬거야. */
+/* keyframes는 animation 속성에서 사용하죠! */
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+```

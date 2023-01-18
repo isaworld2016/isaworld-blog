@@ -2,17 +2,17 @@ import { InferGetStaticPropsType } from "next";
 import Container from "components/layout/Container";
 import Pagination from "components/atom/Pagination";
 import usePagination from "hooks/usePagination";
-import { allNexts, DocumentTypes } from ".contentlayer/generated";
+import { allStyles, DocumentTypes } from ".contentlayer/generated";
 import PostLists from "components/organism/PostLists";
 import useSearchPost from "hooks/useSearchPost";
 import NoResult from "components/atom/NoResult";
 import { getStaticPropsSort } from "common/utils/getStaticPropsMakers";
 
 export const getStaticProps = async () => {
-  return getStaticPropsSort(allNexts);
+  return getStaticPropsSort(allStyles);
 };
 
-const NextPage = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
+const StylePage = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { searchPosts } = useSearchPost(posts);
 
   const {
@@ -52,4 +52,4 @@ const NextPage = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => 
   );
 };
 
-export default NextPage;
+export default StylePage;
